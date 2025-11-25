@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}Blog - LuMaGrind{% endblock %}
+
+{% block content %}
+<!-- Background Cosmique -->
+<div class="cosmic-background">
+  <div class="stars"></div>
+</div>
+
+<!-- Hero Blog -->
+<section class="blog-hero">
+  <div class="container">
+    <div class="blog-hero-content">
+      <div class="blog-hero-badge">
+        <span>📚 Ressources Exclusives</span>
+      </div>
+      
+      <h1 class="blog-hero-title">
+        <span class="title-gradient">Notre Blog</span>
+      </h1>
+      
+      <p class="blog-hero-subtitle">
+        Des articles détaillés, des analyses approfondies et des stratégies concrètes 
+        pour prendre ton entreprise au niveau supérieur.
+      </p>
+      
+      <!-- Barre de Recherche -->
+      <div class="search-bar">
+        <input type="text" placeholder="🔍 Rechercher un article..." id="blogSearch">
+        <button class="search-btn">Rechercher</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Filtres Catégories -->
+<section class="blog-filters">
+  <div class="container">
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-category="all">Tous les Articles</button>
+      <button class="filter-btn" data-category="business">🚀 Business</button>
+      <button class="filter-btn" data-category="mindset">🧠 Mindset</button>
+      <button class="filter-btn" data-category="productivity">⚡ Productivité</button>
+      <button class="filter-btn" data-category="sport">🏋️ Sport & Performance</button>
+      <button class="filter-btn" data-category="marketing">📈 Marketing</button>
+      <button class="filter-btn" data-category="finance">💰 Finance</button>
+    </div>
+  </div>
+</section>
+
+<!-- Grid Articles -->
+<section class="blog-grid-section">
+  <div class="container">
+    <div class="blog-stats">
+      <span><strong id="articleCount">0</strong> articles publiés</span>
+      <span><strong id="readCount">0</strong> lectures totales</span>
+      <span><strong id="authorCount">0</strong> experts</span>
+    </div>
+
+    <div class="blog-grid" id="blogGrid">
+      <!-- Articles générés dynamiquement -->
+    </div>
+
+    <!-- Template Article -->
+    <template id="articleTemplate">
+      <article class="article-card" data-category="">
+        <div class="article-image">
+          <img src="" alt="">
+          <div class="article-category"></div>
+        </div>
+        
+        <div class="article-content">
+          <div class="article-meta">
+            <span class="article-date"></span>
+            <span class="article-read-time"></span>
+          </div>
+          
+          <h3 class="article-title"></h3>
+          <p class="article-excerpt"></p>
+          
+          <div class="article-footer">
+            <div class="article-author">
+              <div class="author-avatar"></div>
+              <span class="author-name"></span>
+            </div>
+            <a href="#" class="read-more">Lire l'article →</a>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <button class="pagination-btn active">1</button>
+      <button class="pagination-btn">2</button>
+      <button class="pagination-btn">3</button>
+      <button class="pagination-btn next">Suivant →</button>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter Blog -->
+<section class="blog-newsletter">
+  <div class="container">
+    <div class="newsletter-card">
+      <div class="newsletter-content">
+        <h3>📬 Ne rate aucun article</h3>
+        <p>Reçois nos meilleurs articles directement dans ta boîte mail + un guide gratuit</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Ton email..." required>
+          <button type="submit">S'abonner</button>
+        </form>
+      </div>
+      <div class="newsletter-bonus">
+        <div class="bonus-icon">🎁</div>
+        <p><strong>Guide OFFERT :</strong> "10 stratégies pour 10x ta productivité"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="{{ url_for('static', filename='js/blog.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+
+{% block title %}Contenu - LuMaGrind{% endblock %}
+
+{% block content %}
+<!-- Background Cosmique -->
+<div class="cosmic-background">
+  <div class="stars"></div>
+</div>
+
+<!-- Hero Section Contenu -->
+<section class="content-hero">
+  <div class="content-hero-content">
+    <div class="content-hero-badge">
+      <span>🎬 Contenu Épique</span>
+    </div>
+    
+    <h1 class="content-hero-title">
+      <span class="title-gradient">Notre Contenu</span>
+    </h1>
+    
+    <p class="content-hero-subtitle">
+      Une dose quotidienne de motivation, business et mindset pour transformer 
+      ton hustle en succès. Du contenu authentique qui déchire !
+    </p>
+  </div>
+</section>
+
+<!-- Navigation Plateformes -->
+<section class="platforms-navigation">
+  <div class="platforms-container">
+    <div class="platforms-scroll">
+      <button class="platform-tab active" data-platform="all">
+        🌟 Tout le Contenu
+      </button>
+      <button class="platform-tab" data-platform="instagram">
+        📸 Instagram
+      </button>
+      <button class="platform-tab" data-platform="tiktok">
+        🎵 TikTok
+      </button>
+      <button class="platform-tab" data-platform="facebook">
+        🌐 Facebook
+      </button>
+      <button class="platform-tab" data-platform="youtube">
+        ▶️ YouTube
+      </button>
+      <button class="platform-tab" data-platform="linkedin">
+        💼 LinkedIn
+      </button>
+      <button class="platform-tab" data-platform="twitter">
+        🐦 Twitter
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Filtres par Catégorie -->
+<section class="content-filters">
+  <div class="filters-container">
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-category="all">
+        🚀 Tout Voir
+      </button>
+      <button class="filter-btn" data-category="motivation">
+        💪 Motivation
+      </button>
+      <button class="filter-btn" data-category="business">
+        📈 Business
+      </button>
+      <button class="filter-btn" data-category="mindset">
+        🧠 Mindset
+      </button>
+      <button class="filter-btn" data-category="grind">
+        🔥 Daily Grind
+      </button>
+        <button class="filter-btn" data-category="sport">🏋️ Sport & Performance</button>
+
+      <button class="filter-btn" data-category="success">
+        🏆 Success Stories
+      </button>
+      <button class="filter-btn" data-category="tips">
+        💡 Tips & Astuces
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Stats du Contenu -->
+<section class="content-stats">
+  <div class="stats-grid">
+    <div class="content-stat animate-on-scroll">
+      <div class="stat-icon">📊</div>
+      <div class="stat-text">
+        <strong id="totalContent">0</strong>
+        <span>Contenus Publiés</span>
+      </div>
+    </div>
+    
+    <div class="content-stat animate-on-scroll">
+      <div class="stat-icon">👁️</div>
+      <div class="stat-text">
+        <strong id="totalViews">0</strong>
+        <span>Vues Totales</span>
+      </div>
+    </div>
+    
+    <div class="content-stat animate-on-scroll">
+      <div class="stat-icon">❤️</div>
+      <div class="stat-text">
+        <strong id="totalLikes">0</strong>
+        <span>Réactions</span>
+      </div>
+    </div>
+    
+    <div class="content-stat animate-on-scroll">
+      <div class="stat-icon">🌍</div>
+      <div class="stat-text">
+        <strong id="totalShares">0</strong>
+        <span>Partages</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Grid de Contenu Principal -->
+<section class="content-grid-section">
+  <div class="content-grid-container">
+    <div class="content-grid" id="contentGrid">
+      <!-- Le contenu sera généré dynamiquement par JavaScript -->
+    </div>
+
+    <!-- Template de Carte de Contenu -->
+    <template id="contentCardTemplate">
+      <div class="content-card" data-platform="" data-category="">
+        <div class="card-header">
+          <div class="platform-info">
+            <div class="platform-icon"></div>
+            <span class="platform-name"></span>
+          </div>
+          <div class="content-meta">
+            <span class="content-category"></span>
+            <span class="content-date"></span>
+          </div>
+        </div>
+        
+        <div class="media-container">
+          <img src="" alt="" class="media-image">
+          <div class="media-overlay">
+            <div class="play-button">▶️</div>
+          </div>
+        </div>
+        
+        <div class="card-body">
+          <p class="content-description"></p>
+        </div>
+        
+        <div class="card-stats">
+          <div class="stat-item">
+            <span class="stat-icon">❤️</span>
+            <span class="stat-count"></span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">💬</span>
+            <span class="stat-count"></span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">👁️</span>
+            <span class="stat-count"></span>
+          </div>
+        </div>
+        
+        <div class="card-actions">
+          <button class="action-btn share-btn">
+            <span>↗️</span>
+            Partager
+          </button>
+          <button class="action-btn save-btn">
+            <span>💾</span>
+            Sauvegarder
+          </button>
+          <button class="action-btn view-btn">
+            <span>👀</span>
+            Voir
+          </button>
+        </div>
+      </div>
+    </template>
+    
+    <!-- Load More -->
+    <div class="load-more-section">
+      <button class="load-more-btn" id="loadMoreBtn">
+        📥 Charger Plus de Contenu
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="content-newsletter">
+  <div class="newsletter-card animate-on-scroll">
+    <div class="newsletter-content">
+      <h3>🚀 Ne Rate Rien !</h3>
+      <p>
+        Reçois notre meilleur contenu directement dans ta boîte mail. 
+        Motivation, business, mindset - tout ce dont tu as besoin pour 
+        transformer ton hustle en succès.
+      </p>
+      <form class="newsletter-form" id="contentNewsletterForm">
+        <input type="email" placeholder="Ton email..." required>
+        <button type="submit">S'abonner 🔥</button>
+      </form>
+    </div>
+    <div class="newsletter-illustration">
+      <div class="floating-emoji">📧</div>
+      <div class="floating-emoji">🚀</div>
+      <div class="floating-emoji">💪</div>
+    </div>
+  </div>
+</section>
+
+<!-- Script pour le Contenu Dynamique -->
+<script src="{{ url_for('static', filename='js/content.js') }}"></script>
+
+<!-- Initialisation -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialiser le gestionnaire de contenu
+  if (typeof ContentManager !== 'undefined') {
+    window.contentManager = new ContentManager();
+  }
+  
+  // Animation au scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    observer.observe(el);
+  });
+});
+</script>
+{% endblock %}

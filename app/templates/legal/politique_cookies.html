@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Politique des Cookies - LuMaGrind{% endblock %}
+
+{% block content %}
+<!-- Background Cosmique -->
+<div class="cosmic-background">
+    <div class="stars"></div>
+</div>
+
+<section class="legal-section">
+    <div class="legal-container">
+        <div class="legal-header">
+            <h1>Politique des Cookies</h1>
+            <p class="legal-update">Dernière mise à jour : 24 novembre 2025</p>
+        </div>
+
+        <div class="legal-content">
+            <div class="legal-card">
+                <h2>Qu'est-ce qu'un cookie ?</h2>
+                <p>Un cookie est un petit fichier texte stocké sur votre appareil lorsque vous visitez un site web. Il permet au site de mémoriser vos actions et préférences.</p>
+            </div>
+
+            <div class="legal-card">
+                <h2>Cookies que nous utilisons</h2>
+                
+                <h3>Cookies Essentiels</h3>
+                <ul>
+                    <li><strong>Session utilisateur :</strong> Maintient votre connexion</li>
+                    <li><strong>Sécurité :</strong> Protection contre les attaques</li>
+                    <li><strong>Préférences :</strong> Thème sombre/clair</li>
+                </ul>
+
+                <h3>Cookies Analytics</h3>
+                <ul>
+                    <li><strong>Google Analytics :</strong> Analyse du trafic</li>
+                    <li><strong>Hotjar :</strong> Amélioration de l'expérience utilisateur</li>
+                </ul>
+
+                <h3>Cookies Marketing</h3>
+                <ul>
+                    <li><strong>Facebook Pixel :</strong> Mesure des conversions</li>
+                    <li><strong>Google Ads :</strong> Publicité ciblée</li>
+                </ul>
+            </div>
+
+            <div class="legal-card">
+                <h2>Gestion des Cookies</h2>
+                <p>Vous pouvez contrôler les cookies via les paramètres de votre navigateur :</p>
+                <ul>
+                    <li><strong>Chrome :</strong> Paramètres → Confidentialité et sécurité → Cookies</li>
+                    <li><strong>Firefox :</strong> Options → Vie privée et sécurité → Cookies</li>
+                    <li><strong>Safari :</strong> Préférences → Confidentialité → Cookies</li>
+                </ul>
+            </div>
+
+            <div class="legal-card">
+                <h2>Consentement</h2>
+                <p>En continuant à utiliser notre site, vous consentez à l'utilisation des cookies conformément à cette politique.</p>
+                <button id="cookieSettings" class="btn btn-primary">Gérer mes préférences</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.getElementById('cookieSettings').addEventListener('click', function() {
+    // Ici vous pouvez intégrer un gestionnaire de cookies comme Cookiebot ou OneTrust
+    alert('Système de gestion des cookies à intégrer. Vous pouvez utiliser Cookiebot, OneTrust ou un service similaire.');
+});
+</script>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<div class="admin-header">
+    <h1 class="admin-title">Message de {{ message.name }}</h1>
+</div>
+
+<div class="form-card">
+    <div class="message-details">
+        <p><strong>Email:</strong> {{ message.email }}</p>
+        <p><strong>Sujet:</strong> {{ message.subject }}</p>
+        <p><strong>Date:</strong> {{ message.timestamp }}</p>
+        <p><strong>Message:</strong></p>
+        <div class="message-content">
+            {{ message.message }}
+        </div>
+    </div>
+</div>
+{% endblock %}

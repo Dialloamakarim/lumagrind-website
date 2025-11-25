@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+
+{% block title %}Success Stories - LuMaGrind{% endblock %}
+
+{% block content %}
+<!-- Background Cosmique -->
+<div class="cosmic-background">
+  <div class="stars"></div>
+</div>
+
+<!-- Hero Success -->
+<section class="success-hero">
+  <div class="container">
+    <div class="success-hero-content">
+      <div class="success-hero-badge">
+        <span>🏆 Preuves de Réussite</span>
+      </div>
+      
+      <h1 class="success-hero-title">
+        <span class="title-gradient">Success Stories</span>
+      </h1>
+      
+      <p class="success-hero-subtitle">
+        Découvre comment nos grinders ont transformé leur vie et leur business 
+        en appliquant nos stratégies. Leur succès est ta meilleure inspiration.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Stories Grid -->
+<section class="stories-section">
+  <div class="container">
+    <div class="stories-grid">
+      <!-- Story 1 -->
+      <div class="story-card animate-on-scroll">
+        <div class="story-header">
+          <div class="story-avatar">💼</div>
+          <div class="story-meta">
+            <h3>Marc, E-commerce</h3>
+            <span>De 2K à 50K€/mois</span>
+          </div>
+        </div>
+        <div class="story-content">
+          <p>"En 6 mois avec le coaching LuMaGrind, j'ai scaling mon e-commerce de 2K à 50K€ par mois. Les stratégies d'acquisition et le mindset m'ont tout changé."</p>
+        </div>
+        <div class="story-stats">
+          <div class="stat">
+            <strong>+2400%</strong>
+            <span>Croissance</span>
+          </div>
+          <div class="stat">
+            <strong>6 mois</strong>
+            <span>Durée</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Story 2 -->
+      <div class="story-card animate-on-scroll">
+        <div class="story-header">
+          <div class="story-avatar">🚀</div>
+          <div class="story-meta">
+            <h3>Sarah, Agency Owner</h3>
+            <span>De freelance à 100K€</span>
+          </div>
+        </div>
+        <div class="story-content">
+          <p>"Le programme Elite m'a permis de transformer mon activité de freelance en agence à 6 chiffres. L'accompagnement sur la stratégie pricing a été décisif."</p>
+        </div>
+        <div class="story-stats">
+          <div class="stat">
+            <strong>5x</strong>
+            <span>Revenue</span>
+          </div>
+          <div class="stat">
+            <strong>8 mois</strong>
+            <span>Durée</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Story 3 -->
+      <div class="story-card animate-on-scroll">
+        <div class="story-header">
+          <div class="story-avatar">📱</div>
+          <div class="story-meta">
+            <h3>Thomas, App Developer</h3>
+            <span>1M de téléchargements</span>
+          </div>
+        </div>
+        <div class="story-content">
+          <p>"Grâce aux techniques de growth hacking partagées, mon application a explosé et atteint 1 million de téléchargements. La communauté m'a soutenu à chaque étape."</p>
+        </div>
+        <div class="story-stats">
+          <div class="stat">
+            <strong>1M+</strong>
+            <span>Users</span>
+          </div>
+          <div class="stat">
+            <strong>1 an</strong>
+            <span>Durée</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="success-cta">
+  <div class="container">
+    <div class="cta-content">
+      <h3>🚀 Prêt à Écrire Ta Success Story ?</h3>
+      <p>Rejoins les grinders qui transforment leurs rêves en réalité</p>
+      <div class="cta-buttons">
+        <a href="{{ url_for('main.services_page') }}" class="btn btn-primary">Démarrer Maintenant</a>
+        <a href="{{ url_for('main.community_page') }}" class="btn btn-secondary">Rencontrer la Communauté</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.success-hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 2rem 4rem;
+  background: linear-gradient(135deg, var(--darker-space) 0%, rgba(255, 107, 53, 0.15) 100%);
+}
+
+.success-hero-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.success-hero-badge {
+  display: inline-block;
+  background: rgba(255, 107, 53, 0.15);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  border: 2px solid var(--primary-glow);
+  margin-bottom: 2rem;
+}
+
+.stories-section {
+  padding: 6rem 0;
+}
+
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.story-card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.story-card:hover {
+  border-color: var(--primary-glow);
+  transform: translateY(-5px);
+  box-shadow: var(--glow-primary);
+}
+
+.story-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.story-avatar {
+  width: 60px;
+  height: 60px;
+  background: var(--gradient-fire);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.story-meta h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.story-meta span {
+  color: var(--text-meteor);
+}
+
+.story-content {
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.story-stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  font-size: 1.5rem;
+  background: var(--gradient-fire);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat span {
+  font-size: 0.9rem;
+  color: var(--text-meteor);
+}
+
+.success-cta {
+  padding: 6rem 0;
+  text-align: center;
+  background: var(--dark-space);
+}
+</style>
+{% endblock %}

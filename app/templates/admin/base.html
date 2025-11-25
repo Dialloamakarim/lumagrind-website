@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Admin - LuMaGrind{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dark-mode">
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="admin-brand">
+                <div class="admin-logo">
+                    <span class="logo-fire">🔥</span>
+                    <span class="logo-text">LuMaGrind Admin</span>
+                </div>
+            </div>
+            
+            <nav class="admin-nav">
+                <div class="nav-section">
+                    <h3>Principal</h3>
+                    <ul class="nav-links">
+                        <li><a href="{{ url_for('admin.dashboard') }}" class="{% if request.endpoint == 'admin.dashboard' %}active{% endif %}">
+                            <span class="nav-icon">📊</span>
+                            Dashboard
+                        </a></li>
+                        <li><a href="{{ url_for('admin.analytics') }}" class="{% if request.endpoint == 'admin.analytics' %}active{% endif %}">
+                            <span class="nav-icon">📈</span>
+                            Analytics
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Contenu</h3>
+                    <ul class="nav-links">
+                        <li><a href="{{ url_for('admin.posts') }}" class="{% if request.endpoint == 'admin.posts' %}active{% endif %}">
+                            <span class="nav-icon">📝</span>
+                            Articles
+                        </a></li>
+                        <li><a href="{{ url_for('admin.categories') }}" class="{% if request.endpoint == 'admin.categories' %}active{% endif %}">
+                            <span class="nav-icon">📂</span>
+                            Catégories
+                        </a></li>
+                        <li><a href="{{ url_for('admin.media') }}" class="{% if request.endpoint == 'admin.media' %}active{% endif %}">
+                            <span class="nav-icon">🖼️</span>
+                            Media
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Communauté</h3>
+                    <ul class="nav-links">
+                        <li><a href="{{ url_for('admin.users') }}" class="{% if request.endpoint == 'admin.users' %}active{% endif %}">
+                            <span class="nav-icon">👥</span>
+                            Utilisateurs
+                        </a></li>
+                        <li><a href="{{ url_for('admin.messages') }}" class="{% if request.endpoint == 'admin.messages' %}active{% endif %}">
+                            <span class="nav-icon">📧</span>
+                            Messages
+                        </a></li>
+                        <!-- <li><a href="{{ url_for('admin.admin_testimonials') }}" class="{% if request.endpoint == 'admin.admin_testimonials' %}active{% endif %}">
+                            <span class="nav-icon">💬</span>
+                            Témoignages
+                        </a></li> -->
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Paramètres</h3>
+                    <ul class="nav-links">
+                        <li><a href="{{ url_for('admin.settings') }}" class="{% if request.endpoint == 'admin.settings' %}active{% endif %}">
+                            <span class="nav-icon">⚙️</span>
+                            Général
+                        </a></li>
+                        <li><a href="{{ url_for('admin.theme') }}" class="{% if request.endpoint == 'admin.theme' %}active{% endif %}">
+                            <span class="nav-icon">🎨</span>
+                            Apparence
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <ul class="nav-links">
+                        <li><a href="/">
+                            <span class="nav-icon">🌐</span>
+                            Voir le site
+                        </a></li>
+                        <li><a href="{{ url_for('admin.logout') }}">
+                            <span class="nav-icon">🚪</span>
+                            Déconnexion
+                        </a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Messages flash -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for category, message in messages %}
+                            <div class="flash-message flash-{{ category }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+    
+    <script>
+        // Gestion des messages flash
+        document.addEventListener('DOMContentLoaded', function() {
+            const flashMessages = document.querySelectorAll('.flash-message');
+            flashMessages.forEach(message => {
+                setTimeout(() => {
+                    message.style.opacity = '0';
+                    setTimeout(() => message.remove(), 300);
+                }, 5000);
+            });
+        });
+    </script>
+</body>
+</html>

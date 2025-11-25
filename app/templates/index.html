@@ -1,0 +1,646 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Background Cosmique -->
+<div class="cosmic-background">
+  <div class="stars"></div>
+</div>
+
+<!-- Particules Flottantes -->
+<div class="floating-particles" id="floatingParticles"></div>
+
+<!-- Écran de Chargement -->
+<div class="loading-screen" id="loadingScreen">
+  <div class="loading-logo">🔥</div>
+  <div class="loading-text">LuMaGrind - Chargement de l'énergie...</div>
+  <div class="loading-bar">
+    <div class="loading-progress"></div>
+  </div>
+</div>
+
+<!-- Hero Section Épique -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span>🔥 Deux esprits, une vision</span>
+    </div>
+    
+    <h1 class="hero-title">
+      <span class="title-gradient">LuMaGrind</span>
+    </h1>
+    
+    <p class="hero-subtitle">
+      Hustle + Discipline = <span class="success-text">Succès</span>
+    </p>
+    
+    <p class="hero-description">
+      On partage motivation, business, mindset et grind pour t'aider à <span class="glow-text">level up</span>. 🚀
+      <br>Rejoins la révolution des entrepreneurs qui osent rêver GRAND.
+    </p>
+    
+    <div class="hero-buttons">
+      <a href="#about" class="btn btn-primary matrix-border">
+        🚀 Commencer le Grind
+      </a>
+      <a href="{{ url_for('main.content_page') }}" class="btn btn-secondary">
+        📱 Voir le Contenu
+      </a>
+      <a href="{{ url_for('main.community_page') }}" class="btn btn-secondary">
+        👥 Rejoindre la Communauté
+      </a>
+    </div>
+  </div>
+  
+  <div class="scroll-indicator">
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- Stats Section Dynamique -->
+<section class="stats">
+  <div class="stats-container">
+    <div class="stat-item animate-on-scroll">
+      <div class="stat-number" data-count="12457">0</div>
+      <div class="stat-label">Grinders Actifs</div>
+    </div>
+    
+    <div class="stat-item animate-on-scroll">
+      <div class="stat-number" data-count="8923">0</div>
+      <div class="stat-label">Contenus Épic</div>
+    </div>
+    
+    <div class="stat-item animate-on-scroll">
+      <div class="stat-number" data-count="99">0</div>
+      <div class="stat-label">% de Réussite</div>
+    </div>
+    
+    <div class="stat-item animate-on-scroll">
+      <div class="stat-number" data-count="24">0</div>
+      <div class="stat-label">Heures de Grind</div>
+    </div>
+  </div>
+</section>
+
+<!-- About Preview Cosmique -->
+<section id="about" class="about-preview">
+  <div class="container">
+    <h2 class="animate-on-scroll">✨ La Fusion Parfaite</h2>
+    
+    <div class="dual-layout">
+      <div class="dual-card animate-on-scroll">
+        <h3>Luidgi</h3>
+        <p>🎯 <strong>Stratège & Mindset Coach</strong></p>
+        <p>Spécialiste en développement personnel et stratégies business avancées</p>
+        <div class="card-stats">
+          <span>🔥 10+ ans d'expérience</span>
+          <span>🚀 500+ coachés</span>
+        </div>
+      </div>
+      
+      <div class="dual-card animate-on-scroll">
+        <h3>Mamadou</h3>
+        <p>💪 <strong>Hustler & Execution Expert</strong></p>
+        <p>Expert en exécution rapide et croissance exponentielle</p>
+        <div class="card-stats">
+          <span>⭐ 15+ projets</span>
+          <span>📈 7 chiffres générés</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="fusion-cta animate-on-scroll" style="text-align: center; margin-top: 4rem;">
+      <h3 style="font-size: 2rem; margin-bottom: 1rem;">🚀 Notre Mission</h3>
+      <p style="font-size: 1.2rem; color: var(--text-meteor); max-width: 600px; margin: 0 auto;">
+        Transformer le hustle en succès concret. Inspirer la nouvelle génération d'entrepreneurs à croire en leurs rêves et passer à l'action MASSIVE.
+      </p>
+    </div>
+  </div>
+</section>
+<!-- Section Ce Qu'on Partage -->
+<section id="sharing" class="sharing-section">
+  <div class="sharing-container">
+    <div class="sharing-header">
+      <div class="sharing-badge">
+        <span>🎯 Notre Valeur Ajoutée</span>
+      </div>
+      
+      <h2 class="sharing-title">
+        Ce Qu'on Partage <span class="title-gradient">Avec Vous</span>
+      </h2>
+      
+      <p class="sharing-subtitle">
+        Du contenu authentique, des stratégies éprouvées et un mindset de winner. 
+        Tout ce dont tu as besoin pour transformer ton hustle en succès concret.
+      </p>
+    </div>
+
+    <!-- Grid des Catégories de Contenu -->
+    <div class="sharing-grid">
+      <!-- Motivation & Mindset -->
+      <div class="content-category animate-on-scroll">
+        <div class="category-header">
+          <div class="category-icon">💪</div>
+          <div class="category-content">
+            <h3>Motivation & Mindset</h3>
+            <p>Développe la mentalité d'un champion</p>
+          </div>
+        </div>
+        
+        <ul class="category-features">
+          <li>
+            <div class="feature-icon">🔥</div>
+            <span>Routines matinales des winners</span>
+          </li>
+          <li>
+            <div class="feature-icon">🧠</div>
+            <span>Techniques de visualisation</span>
+          </li>
+          <li>
+            <div class="feature-icon">⚡</div>
+            <span>Gestion du stress et pression</span>
+          </li>
+          <li>
+            <div class="feature-icon">🎯</div>
+            <span>Fixation d'objectifs SMART</span>
+          </li>
+          <li>
+            <div class="feature-icon">💫</div>
+            <span>Stratégies anti-procrastination</span>
+          </li>
+        </ul>
+        
+        <div class="category-stats">
+          <div class="stat">
+            <span class="stat-value">247</span>
+            <span class="stat-label">Posts Motivation</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">98%</span>
+            <span class="stat-label">Satisfaction</span>
+          </div>
+          <a href="{{ url_for('main.content_page') }}?category=motivation" class="category-cta">
+            Voir le contenu →
+          </a>
+        </div>
+      </div>
+      <!-- Dans la section .sharing-grid, AJOUTE cette carte après les 3 existantes -->
+
+<!-- Sport & Performance -->
+<div class="content-category animate-on-scroll">
+    <div class="category-header">
+        <div class="category-icon">🏋️</div>
+        <div class="category-content">
+            <h3>Sport & Performance</h3>
+            <p>Le corps et l'esprit sont connectés - Optimise tes performances</p>
+        </div>
+    </div>
+    
+    <ul class="category-features">
+        <li>
+            <div class="feature-icon">💪</div>
+            <span>Routines d'entraînement efficaces</span>
+        </li>
+        <li>
+            <div class="feature-icon">🧠</div>
+            <span>Mindset sportif pour le business</span>
+        </li>
+        <li>
+            <div class="feature-icon">⚡</div>
+            <span>Récupération et énergie optimale</span>
+        </li>
+        <li>
+            <div class="feature-icon">📊</div>
+            <span>Tracking performance physique</span>
+        </li>
+        <li>
+            <div class="feature-icon">🔥</div>
+            <span>Discipline d'athlète appliquée au business</span>
+        </li>
+    </ul>
+    
+    <div class="category-stats">
+        <div class="stat">
+            <span class="stat-value">78</span>
+            <span class="stat-label">Workouts Partagés</span>
+        </div>
+        <div class="stat">
+            <span class="stat-value">95%</span>
+            <span class="stat-label">Énergie Boost</span>
+        </div>
+        <a href="{{ url_for('main.content_page') }}?category=sport" class="category-cta">
+            Voir le contenu →
+        </a>
+    </div>
+    </div>
+
+      <!-- Business & Entrepreneuriat -->
+      <div class="content-category animate-on-scroll">
+        <div class="category-header">
+          <div class="category-icon">🚀</div>
+          <div class="category-content">
+            <h3>Business & Entrepreneuriat</h3>
+            <p>Stratégies concrètes pour scale ton business</p>
+          </div>
+        </div>
+        
+        <ul class="category-features">
+          <li>
+            <div class="feature-icon">📈</div>
+            <span>Acquisition clients à moindre coût</span>
+          </li>
+          <li>
+            <div class="feature-icon">💼</div>
+            <span>Modèles économiques rentables</span>
+          </li>
+          <li>
+            <div class="feature-icon">🔧</div>
+            <span>Automatisation et productivité</span>
+          </li>
+          <li>
+            <div class="feature-icon">💰</div>
+            <span>Techniques de pricing optimal</span>
+          </li>
+          <li>
+            <div class="feature-icon">🌍</div>
+            <span>Expansion internationale</span>
+          </li>
+        </ul>
+        
+        <div class="category-stats">
+          <div class="stat">
+            <span class="stat-value">156</span>
+            <span class="stat-label">Stratégies Business</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">10K+</span>
+            <span class="stat-label">€ Générés</span>
+          </div>
+          <a href="{{ url_for('main.content_page') }}?category=business" class="category-cta">
+            Voir le contenu →
+          </a>
+        </div>
+      </div>
+
+      <!-- Daily Grind & Productivité -->
+      <div class="content-category animate-on-scroll">
+        <div class="category-header">
+          <div class="category-icon">🔥</div>
+          <div class="category-content">
+            <h3>Daily Grind & Productivité</h3>
+            <p>Optimise chaque minute de ta journée</p>
+          </div>
+        </div>
+        
+        <ul class="category-features">
+          <li>
+            <div class="feature-icon">⏰</div>
+            <span>Time blocking avancé</span>
+          </li>
+          <li>
+            <div class="feature-icon">📊</div>
+            <span>Outils de tracking performance</span>
+          </li>
+          <li>
+            <div class="feature-icon">🎯</div>
+            <span>Méthode Deep Work</span>
+          </li>
+          <li>
+            <div class="feature-icon">⚡</div>
+            <span>Récupération et énergie</span>
+          </li>
+          <li>
+            <div class="feature-icon">🔄</div>
+            <span>Revue hebdomadaire</span>
+          </li>
+        </ul>
+        
+        <div class="category-stats">
+          <div class="stat">
+            <span class="stat-value">89</span>
+            <span class="stat-label">Routines Partagées</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">4.2x</span>
+            <span class="stat-label">Productivité</span>
+          </div>
+          <a href="{{ url_for('main.content_page') }}?category=grind" class="category-cta">
+            Voir le contenu →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Résultats -->
+    <div class="results-section animate-on-scroll">
+      <div class="results-header">
+        <h3 class="results-title">Des Résultats Concrets</h3>
+        <p class="results-subtitle">
+          La preuve par l'exemple : nos grinders obtiennent des résultats extraordinaires 
+          en appliquant nos stratégies
+        </p>
+      </div>
+      
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-icon">💰</div>
+          <div class="result-value">10K€+</div>
+          <div class="result-label">Revenue mensuel moyen après 6 mois</div>
+        </div>
+        
+        <div class="result-card">
+          <div class="result-icon">📈</div>
+          <div class="result-value">3.5x</div>
+          <div class="result-label">Augmentation de productivité</div>
+        </div>
+        
+        <div class="result-card">
+          <div class="result-icon">🎯</div>
+          <div class="result-value">94%</div>
+          <div class="result-label">Atteignent leurs objectifs trimestriels</div>
+        </div>
+        
+        <div class="result-card">
+          <div class="result-icon">🚀</div>
+          <div class="result-value">2.1 ans</div>
+          <div class="result-label">Économisés dans le parcours entrepreneurial</div>
+        </div>
+      </div>
+    </div>
+    <div class="results-grid">
+    <div class="result-card">
+        <div class="result-icon">💰</div>
+        <div class="result-value">10K€+</div>
+        <div class="result-label">Revenue mensuel moyen après 6 mois</div>
+    </div>
+    
+    <div class="result-card">
+        <div class="result-icon">📈</div>
+        <div class="result-value">3.5x</div>
+        <div class="result-label">Augmentation de productivité</div>
+    </div>
+    
+    <div class="result-card">
+        <div class="result-icon">💪</div>
+        <div class="result-value">87%</div>
+        <div class="result-label">Amélioration énergie grâce au sport</div>
+    </div>
+    
+    <div class="result-card">
+        <div class="result-icon">🎯</div>
+        <div class="result-value">94%</div>
+        <div class="result-label">Atteignent leurs objectifs trimestriels</div>
+    </div>
+    </div>
+
+    <!-- CTA Final -->
+    <div class="sharing-cta animate-on-scroll">
+      <div class="cta-content">
+        <h3 class="cta-title">Prêt à Transformer Ton Hustle ?</h3>
+        <p class="cta-description">
+          Rejoins des milliers de grinders qui ont déjà multiplié leurs revenus, 
+          boosté leur productivité et développé le mindset des winners.
+        </p>
+        <div class="cta-buttons">
+          <a href="{{ url_for('main.community_page') }}" class="cta-btn-primary">
+            🚀 Rejoindre la Communauté
+          </a>
+          <a href="{{ url_for('main.content_page') }}" class="cta-btn-secondary">
+            📱 Explorer le Contenu
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <!-- Section Témoignages -->
+<section id="testimonials" class="testimonials-section">
+    <div class="testimonials-container">
+        <div class="testimonials-header">
+            <div class="testimonials-badge">
+                <span>💬 Témoignages</span>
+            </div>
+            <h2 class="testimonials-title">Ils ont transformé leur vie</h2>
+            <p class="testimonials-subtitle">
+                Découvrez les réussites de ceux qui ont adopté le mindset LuMaGrind et ont explosé leurs résultats
+            </p>
+        </div>
+
+        <!-- Slider des Témoignages -->
+        <div class="testimonials-slider">
+            <div class="testimonials-track" id="testimonialsTrack">
+                <!-- Témoignage 1 -->
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">"</div>
+                        <p class="testimonial-text">
+                            "Grâce à LuMaGrind, j'ai multiplié mon chiffre d'affaires par 5 en 6 mois. Le mindset et les stratégies partagées ont complètement transformé ma vision du business."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">KM</div>
+                            <div class="author-info">
+                                <div class="author-name">Kevin Martin</div>
+                                <div class="author-role">Entrepreneur E-commerce</div>
+                            </div>
+                        </div>
+                        <div class="testimonial-stats">
+                            <div class="testimonial-stat">
+                                <span class="stat-value">+425%</span>
+                                <span class="stat-label">CA</span>
+                            </div>
+                            <div class="testimonial-stat">
+                                <span class="stat-value">6 mois</span>
+                                <span class="stat-label">Résultats</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Témoignage 2 -->
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">"</div>
+                        <p class="testimonial-text">
+                            "La discipline mentale apprise avec LuMaGrind m'a permis de surmonter mes blocages. Aujourd'hui, je gère une équipe de 15 personnes avec un leadership affirmé."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">SD</div>
+                            <div class="author-info">
+                                <div class="author-name">Sarah Dubois</div>
+                                <div class="author-role">Manager Tech</div>
+                            </div>
+                        </div>
+                        <div class="testimonial-stats">
+                            <div class="testimonial-stat">
+                                <span class="stat-value">15</span>
+                                <span class="stat-label">Équipe</span>
+                            </div>
+                            <div class="testimonial-stat">
+                                <span class="stat-value">2x</span>
+                                <span class="stat-label">Productivité</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Témoignage 3 -->
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">"</div>
+                        <p class="testimonial-text">
+                            "Les routines daily grind ont révolutionné mon organisation. Je produis maintenant en 4h ce qui me prenait toute une journée. La clarté mentale est incroyable !"
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">ML</div>
+                            <div class="author-info">
+                                <div class="author-name">Marc Lambert</div>
+                                <div class="author-role">Freelance Digital</div>
+                            </div>
+                        </div>
+                        <div class="testimonial-stats">
+                            <div class="testimonial-stat">
+                                <span class="stat-value">75%</span>
+                                <span class="stat-label">Temps gagné</span>
+                            </div>
+                            <div class="testimonial-stat">
+                                <span class="stat-value">3x</span>
+                                <span class="stat-label">Clients</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contrôles du slider -->
+            <div class="slider-controls">
+                <button class="slider-btn" id="prevBtn">←</button>
+                <div class="slider-dots" id="sliderDots">
+                    <!-- Les dots seront générés par JavaScript -->
+                </div>
+                <button class="slider-btn" id="nextBtn">→</button>
+            </div>
+        </div>
+
+        <!-- Stats Globales -->
+        <div class="testimonials-stats">
+            <div class="testimonial-stat-card animate-on-scroll">
+                <div class="stat-card-icon">🚀</div>
+                <div class="stat-card-value">1,247+</div>
+                <div class="stat-card-label">Grinders Actifs</div>
+            </div>
+            <div class="testimonial-stat-card animate-on-scroll">
+                <div class="stat-card-icon">💪</div>
+                <div class="stat-card-value">98%</div>
+                <div class="stat-card-label">Satisfaction</div>
+            </div>
+            <div class="testimonial-stat-card animate-on-scroll">
+                <div class="stat-card-icon">📈</div>
+                <div class="stat-card-value">3.2x</div>
+                <div class="stat-card-label">Résultats Moyens</div>
+            </div>
+            <div class="testimonial-stat-card animate-on-scroll">
+                <div class="stat-card-icon">⭐</div>
+                <div class="stat-card-value">4.9/5</div>
+                <div class="stat-card-label">Avis Clients</div>
+            </div>
+        </div>
+    </div>
+</section>
+</section>
+
+<!-- Script pour les effets spéciaux -->
+<script>
+// Effets de particules
+function createParticles() {
+  const container = document.getElementById('floatingParticles');
+  const particleCount = 50;
+  
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    
+    const size = Math.random() * 4 + 1;
+    const posX = Math.random() * 100;
+    const duration = Math.random() * 20 + 10;
+    const delay = Math.random() * 5;
+    
+    particle.style.cssText = `
+      width: ${size}px;
+      height: ${size}px;
+      left: ${posX}%;
+      animation-duration: ${duration}s;
+      animation-delay: ${delay}s;
+    `;
+    
+    container.appendChild(particle);
+  }
+}
+
+// Animation des compteurs
+function animateCounters() {
+  const counters = document.querySelectorAll('.stat-number');
+  
+  counters.forEach(counter => {
+    const target = parseInt(counter.getAttribute('data-count'));
+    const duration = 2000;
+    const step = target / (duration / 16);
+    let current = 0;
+    
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      counter.textContent = Math.floor(current);
+    }, 16);
+  });
+}
+
+// Initialisation au chargement
+document.addEventListener('DOMContentLoaded', function() {
+  // Créer les particules
+  createParticles();
+  
+  // Simuler le chargement
+  setTimeout(() => {
+    document.getElementById('loadingScreen').style.opacity = '0';
+    setTimeout(() => {
+      document.getElementById('loadingScreen').style.display = 'none';
+      document.body.classList.add('loaded');
+      
+      // Lancer l'animation des compteurs
+      setTimeout(animateCounters, 500);
+    }, 500);
+  }, 2000);
+  
+  // Animation au scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    observer.observe(el);
+  });
+  
+  // Effet de navbar au scroll
+  window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 100) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+});
+</script>
+<!-- Après les autres scripts -->
+<script src="{{ url_for('static', filename='js/testimonials.js') }}"></script>
+
+<style>
+    
+</style>
+{% endblock %}

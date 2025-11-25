@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>{% block title %}LuMaGrind - Deux esprits, une vision{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
+    <!-- Navigation -->
+    <!-- Navigation -->
+<nav class="navbar">
+    <div class="nav-container">
+        <!-- Logo cliquable -->
+        <a href="{{ url_for('main.home') }}" class="nav-logo">
+            <span class="logo-fire">🔥</span>
+            <span class="logo-text">LuMaGrind</span>
+        </a>
+        
+        <ul class="nav-menu">
+            <li><a href="{{ url_for('main.home') }}">Accueil</a></li>
+            <li><a href="{{ url_for('main.about_page') }}">Notre Histoire</a></li>
+            <li class="nav-dropdown">
+                <a href="#">Contenu 🔽</a>
+                <div class="dropdown-menu">
+                    <a href="{{ url_for('main.content_page') }}">🎬 Tous les Contenus</a>
+                    <a href="{{ url_for('main.blog_page') }}">📚 Blog & Articles</a>
+                    <a href="{{ url_for('main.services_page') }}">💼 Services & Coaching</a>
+                    <a href="{{ url_for('main.success_page') }}">🏆 Success Stories</a>
+                </div>
+            </li>
+            <li><a href="{{ url_for('main.community_page') }}">Communauté</a></li>
+            <li><a href="{{ url_for('main.testimonials_page') }}">Témoignages</a></li>
+            <li><a href="{{ url_for('main.contact_page') }}">Contact</a></li>
+            <li><a href="{{ url_for('main.blog_page') }}" class="nav-cta">Rejoindre</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle">🌓</button>
+    </div>
+</nav>
+    
+    <!-- Contenu Principal -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/content.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/community.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+
+    <!-- Pied de Page Cosmique -->
+    <footer class="cosmic-footer">
+        <div class="footer-container">
+            <!-- Section Principale -->
+            <div class="footer-main">
+                <!-- Brand -->
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-fire">🔥</span>
+                        <span class="logo-text">LuMaGrind</span>
+                    </div>
+                    <p class="footer-tagline">
+                        Transformez votre mindset, maximisez votre potentiel. 
+                        Rejoignez la révolution des grinders.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <span class="social-icon">📸</span>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <span class="social-icon">🐦</span>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <span class="social-icon">💼</span>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <span class="social-icon">📺</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Liens Rapides -->
+                <div class="footer-links">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="{{ url_for('main.home') }}">Accueil</a></li>
+                        <li><a href="{{ url_for('main.about_page') }}">Notre Histoire</a></li>
+                        <li><a href="{{ url_for('main.content_page') }}">Contenu</a></li>
+                        <li><a href="{{ url_for('main.community_page') }}">Communauté</a></li>
+                        <li><a href="{{ url_for('main.blog_page') }}">Blog</a></li>
+                        <li><a href="{{ url_for('main.services_page') }}">Services</a></li>
+                        <li><a href="{{ url_for('main.contact_page') }}">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Ressources -->
+                <div class="footer-links">
+                    <h3>Ressources</h3>
+                    <ul>
+                        <li><a href="{{ url_for('main.blog_page') }}">Blog Motivation</a></li>
+                        <li><a href="{{ url_for('main.services_page') }}">Stratégies Business</a></li>
+                        <li><a href="{{ url_for('main.content_page') }}">Outils Productivité</a></li>
+                        <li><a href="{{ url_for('main.success_page') }}">Success Stories</a></li>
+                        <li><a href="{{ url_for('main.community_page') }}">Communauté</a></li>
+                        <li><a href="#">Événements</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-newsletter">
+                    <h3>Restez Connecté</h3>
+                    <p>Recevez nos stratégies exclusives et conseils mindset directement dans votre boîte mail.</p>
+                    
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" placeholder="Votre email premium" required>
+                            <button type="submit" class="btn-newsletter">
+                                <span>Grind 🚀</span>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="trust-badges">
+                        <div class="trust-badge">
+                            <span class="badge-icon">✅</span>
+                            <span>0 Spam</span>
+                        </div>
+                        <div class="trust-badge">
+                            <span class="badge-icon">⚡</span>
+                            <span>Contenu Exclusif</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Basse -->
+            <div class="legal-links">
+    <a href="{{ url_for('main.legal_mentions') }}">Mentions Légales</a>
+    <a href="{{ url_for('main.legal_privacy') }}">Politique de Confidentialité</a>
+    <a href="{{ url_for('main.legal_terms') }}">Conditions d'Utilisation</a>
+    <a href="{{ url_for('main.legal_cookies') }}">Cookies</a>
+</div>
+<div class="copyright">
+    &copy; 2025 LuMaGrind. Tous droits réservés. 
+    <span class="copyright-heart">🔥</span> 
+    Fait avec passion pour les grinders.
+</div>
+        </div>
+
+        <!-- Éléments Cosmiques -->
+        <div class="cosmic-elements">
+            <div class="cosmic-orbit"></div>
+            <div class="cosmic-particle"></div>
+            <div class="cosmic-particle"></div>
+            <div class="cosmic-particle"></div>
+        </div>
+    </footer>
+</body>
+</html>

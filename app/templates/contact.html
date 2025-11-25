@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block title %}Contact - LuMaGrind{% endblock %}
+
+{% block content %}
+<!-- Background Cosmique -->
+<div class="cosmic-background">
+  <div class="stars"></div>
+</div>
+
+<!-- Hero Section Contact -->
+<section class="contact-hero">
+  <div class="contact-hero-content">
+    <div class="contact-hero-badge">
+      <span>📞 Contacte-Nous</span>
+    </div>
+    
+    <h1 class="contact-hero-title">
+      <span class="title-gradient">Parlons Business</span>
+    </h1>
+    
+    <p class="contact-hero-subtitle">
+      Une question ? Un projet ? Une collaboration ? On est là pour toi, futur grinder !
+      Réponse garantie sous 24h.
+    </p>
+  </div>
+</section>
+
+<!-- Section Contact Principale -->
+<section class="contact-section">
+  <div class="contact-container">
+    <div class="contact-grid">
+      
+      <!-- Formulaire de Contact -->
+      <div class="contact-form-container animate-on-scroll">
+        <div class="form-header">
+          <h2>Envoie-nous un message</h2>
+          <p>Remplis le formulaire et on te répond sous 24h 🚀</p>
+        </div>
+        
+        <form id="contactForm" class="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">Prénom *</label>
+              <input type="text" id="firstName" name="firstName" required>
+              <div class="error-message" id="firstNameError"></div>
+            </div>
+            
+            <div class="form-group">
+              <label for="lastName">Nom *</label>
+              <input type="text" id="lastName" name="lastName" required>
+              <div class="error-message" id="lastNameError"></div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+            <div class="error-message" id="emailError"></div>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Sujet *</label>
+            <select id="subject" name="subject" required>
+              <option value="">Choisis une option</option>
+              <option value="collaboration">🤝 Collaboration</option>
+              <option value="coaching">🎯 Coaching/Consulting</option>
+              <option value="speaking">🎤 Intervention/Conférence</option>
+              <option value="partnership">💼 Partenariat</option>
+              <option value="question">❓ Question générale</option>
+              <option value="other">🔧 Autre</option>
+            </select>
+            <div class="error-message" id="subjectError"></div>
+          </div>
+          
+          <div class="form-group full-width">
+            <label for="message">Ton message *</label>
+            <textarea id="message" name="message" placeholder="Dis-nous tout... Quelle est ta vision ? Comment peut-on t'aider ?" required></textarea>
+            <div class="char-count" id="charCount">0/500 caractères</div>
+            <div class="error-message" id="messageError"></div>
+          </div>
+          
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span class="btn-text">Envoyer le message</span>
+            <span class="btn-loading">
+              <span class="spinner"></span>
+              Envoi en cours...
+            </span>
+          </button>
+        </form>
+      </div>
+      
+      <!-- Informations de Contact -->
+      <div class="contact-info">
+        <!-- Carte Contact -->
+        <div class="info-card animate-on-scroll">
+          <h3>📞 Restons connectés</h3>
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="method-icon">📧</div>
+              <div class="method-info">
+                <strong>Email</strong>
+                <span>contact@lumagrind.com</span>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="method-icon">🌐</div>
+              <div class="method-info">
+                <strong>Réseaux sociaux</strong>
+                <span>@LuMaGrind sur toutes les plateformes</span>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="method-icon">⚡</div>
+              <div class="method-info">
+                <strong>Réponse rapide</strong>
+                <span>24-48h maximum</span>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="method-icon">🚀</div>
+              <div class="method-info">
+                <strong>Collaborations</strong>
+                <span>On adore les projets ambitieux</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- FAQ -->
+        <div class="faq-card animate-on-scroll">
+          <h4>❓ Questions fréquentes</h4>
+          <div class="faq-list">
+            <div class="faq-item">
+              <strong>Proposez-vous du coaching personnalisé ?</strong>
+              <p>Oui ! On offre du mentoring sur mesure pour les entrepreneurs qui veulent passer au niveau supérieur.</p>
+            </div>
+            
+            <div class="faq-item">
+              <strong>Peut-on collaborer sur un projet ?</strong>
+              <p>Absolument ! On est toujours ouvert aux collaborations qui alignent avec nos valeurs et notre vision.</p>
+            </div>
+            
+            <div class="faq-item">
+              <strong>Vous déplacez-vous pour des conférences ?</strong>
+              <p>Oui, en France et à l'international. On adore partager notre énergie en live !</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section CTA -->
+<section class="contact-cta">
+  <div class="cta-container animate-on-scroll">
+    <h2 class="cta-title">Prêt à passer au niveau supérieur ?</h2>
+    <p class="cta-description">
+      Rejoins notre communauté de grinders et transforme ton hustle en succès concret.
+      L'aventure commence ici.
+    </p>
+    <div class="cta-buttons">
+      <a href="{{ url_for('main.community_page') }}" class="btn btn-primary">
+        👥 Rejoindre la communauté
+      </a>
+      <a href="{{ url_for('main.content_page') }}" class="btn btn-secondary">
+        📚 Voir notre contenu
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Modal de Confirmation -->
+<div id="successModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div class="modal-icon">🎉</div>
+    <h3>Message envoyé avec succès !</h3>
+    <p id="successMessage">
+      Merci pour ton message ! On te recontacte très rapidement. En attendant, continue de grinder ! 💪
+    </p>
+    <button class="btn btn-primary" onclick="closeModal()">
+      Super ! Retour à l'accueil
+    </button>
+  </div>
+</div>
+
+<!-- Script JavaScript -->
+<script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+
+<!-- Initialisation -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Animation au scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    observer.observe(el);
+  });
+});
+</script>
+{% endblock %}

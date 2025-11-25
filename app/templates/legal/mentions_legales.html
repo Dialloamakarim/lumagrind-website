@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}Mentions Légales - LuMaGrind{% endblock %}
+
+{% block content %}
+<!-- Background Cosmique -->
+<div class="cosmic-background">
+    <div class="stars"></div>
+</div>
+
+<section class="legal-section">
+    <div class="legal-container">
+        <div class="legal-header">
+            <h1>Mentions Légales</h1>
+            <p class="legal-update">Dernière mise à jour : 24 novembre 2025</p>
+        </div>
+
+        <div class="legal-content">
+            <!-- Éditeur du site -->
+            <div class="legal-section">
+                <h2>Éditeur du Site</h2>
+                <div class="legal-card">
+                    <p><strong>LuMaGrind</strong></p>
+                    <p>Plateforme de développement personnel et professionnel</p>
+                    <p><strong>Email :</strong> contact@lumagrind.com</p>
+                    <p><strong>Directeur de la publication :</strong> Luma Grind</p>
+                </div>
+            </div>
+
+            <!-- Hébergement -->
+            <div class="legal-section">
+                <h2>Hébergement</h2>
+                <div class="legal-card">
+                    <p><strong>Hébergeur :</strong> PythonAnywhere</p>
+                    <p><strong>Adresse :</strong> 2nd Floor, 14 Martello Street, London, E8 3PE</p>
+                    <p><strong>Site web :</strong> www.pythonanywhere.com</p>
+                </div>
+            </div>
+
+            <!-- Propriété intellectuelle -->
+            <div class="legal-section">
+                <h2>Propriété Intellectuelle</h2>
+                <div class="legal-card">
+                    <p>L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle.</p>
+                    <p>Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques.</p>
+                    <p>La marque <strong>LuMaGrind</strong> est une marque déposée.</p>
+                </div>
+            </div>
+
+            <!-- Données personnelles -->
+            <div class="legal-section">
+                <h2>Données Personnelles</h2>
+                <div class="legal-card">
+                    <p>Conformément à la loi "Informatique et Libertés" du 6 janvier 1978 modifiée et au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données vous concernant.</p>
+                    <p>Pour exercer ces droits, contactez-nous à : <strong>privacy@lumagrind.com</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.legal-section {
+    padding: 4rem 0;
+    min-height: 80vh;
+}
+
+.legal-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.legal-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.legal-header h1 {
+    font-size: 3rem;
+    background: var(--gradient-fire);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.legal-update {
+    color: var(--text-meteor);
+    font-size: 1.1rem;
+}
+
+.legal-content h2 {
+    color: var(--primary-glow);
+    margin: 2.5rem 0 1rem 0;
+    font-size: 1.5rem;
+}
+
+.legal-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.legal-card p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.legal-card strong {
+    color: var(--primary-glow);
+}
+
+@media (max-width: 768px) {
+    .legal-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .legal-container {
+        padding: 0 1.5rem;
+    }
+    
+    .legal-card {
+        padding: 1.5rem;
+    }
+}
+</style>
+{% endblock %}

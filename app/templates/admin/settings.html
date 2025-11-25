@@ -1,0 +1,34 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<div class="admin-header">
+    <h1 class="admin-title">Paramètres Généraux</h1>
+</div>
+
+<div class="form-card">
+    <form method="POST">
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="site_title">Nom du site</label>
+                <input type="text" id="site_title" name="site_title" value="{{ settings.site_title }}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="admin_email">Email admin</label>
+                <input type="email" id="admin_email" name="admin_email" value="{{ settings.admin_email }}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="notifications">
+                    <input type="checkbox" id="notifications" name="notifications" {% if settings.notifications %}checked{% endif %}>
+                    Notifications par email
+                </label>
+            </div>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

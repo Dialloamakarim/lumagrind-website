@@ -1,0 +1,525 @@
+{% extends "base.html" %}
+
+{% block title %}Communauté - LuMaGrind{% endblock %}
+
+{% block content %}
+<!-- Background Cosmique -->
+<div class="cosmic-background">
+  <div class="stars"></div>
+</div>
+
+<!-- Hero Communauté -->
+<section class="community-hero">
+    <div class="container">
+        <div class="hero-content animate-on-scroll">
+            <h1>👥 Notre Communauté</h1>
+            <p class="subtitle">Rejoins des milliers de grinders qui bâtissent leur avenir</p>
+            <div class="community-stats">
+                <div class="stat">
+                    <span class="number" id="membersCount">0</span>
+                    <span class="label">Membres</span>
+                </div>
+                <div class="stat">
+                    <span class="number" id="postsCount">0</span>
+                    <span class="label">Posts</span>
+                </div>
+                <div class="stat">
+                    <span class="number" id="countriesCount">0</span>
+                    <span class="label">Pays</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats de Performance -->
+<section class="performance-stats">
+    <div class="container">
+        <div class="results-grid">
+            <div class="result-card animate-on-scroll">
+                <div class="result-icon">💰</div>
+                <div class="result-value">10K€+</div>
+                <div class="result-label">Revenue mensuel moyen après 6 mois</div>
+            </div>
+            
+            <div class="result-card animate-on-scroll">
+                <div class="result-icon">📈</div>
+                <div class="result-value">3.5x</div>
+                <div class="result-label">Augmentation de productivité</div>
+            </div>
+            
+            <div class="result-card animate-on-scroll">
+                <div class="result-icon">💪</div>
+                <div class="result-value">87%</div>
+                <div class="result-label">Amélioration énergie grâce au sport</div>
+            </div>
+            
+            <div class="result-card animate-on-scroll">
+                <div class="result-icon">🎯</div>
+                <div class="result-value">94%</div>
+                <div class="result-label">Atteignent leurs objectifs trimestriels</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Feed Communauté -->
+<section class="community-feed">
+    <div class="container">
+        <h2 class="section-title animate-on-scroll">🔥 Feed des Grinders</h2>
+        
+        <!-- Formulaire de post -->
+        <div class="post-form animate-on-scroll">
+            <div class="form-header">
+                <div class="user-avatar">💪</div>
+                <input type="text" placeholder="Partage ta victoire du jour..." id="postInput">
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary" onclick="createPost()">Grinder Post</button>
+            </div>
+        </div>
+
+        <!-- Posts de la communauté -->
+        <div class="posts-grid" id="postsGrid">
+            <!-- Les posts seront générés dynamiquement -->
+        </div>
+
+        <!-- Template de post (caché) -->
+        <template id="postTemplate">
+            <div class="post-card">
+                <div class="post-header">
+                    <div class="user-info">
+                        <div class="user-avatar">💪</div>
+                        <div class="user-details">
+                            <span class="username">Grinder Anonyme</span>
+                            <span class="post-time">Maintenant</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p class="post-text"></p>
+                </div>
+                <div class="post-actions">
+                    <button class="action-btn like-btn" onclick="likePost(this)">
+                        <span>🔥</span>
+                        <span class="like-count">0</span>
+                    </button>
+                    <button class="action-btn comment-btn" onclick="focusComment(this)">
+                        <span>💬</span>
+                        <span>Commenter</span>
+                    </button>
+                </div>
+                <div class="post-comments">
+                    <!-- Commentaires dynamiques -->
+                </div>
+            </div>
+        </template>
+    </div>
+</section>
+
+<!-- Section Leaders -->
+<section class="leaders-section">
+    <div class="container">
+        <h2 class="section-title animate-on-scroll">🏆 Top Grinders</h2>
+        <div class="leaders-grid" id="leadersGrid">
+            <!-- Leaders dynamiques -->
+        </div>
+    </div>
+</section>
+
+<!-- Section Défis Sport -->
+<section class="sport-challenges">
+    <div class="container">
+        <h2 class="section-title animate-on-scroll">💪 Défis Sport & Performance</h2>
+        <p class="section-subtitle animate-on-scroll">Le corps et l'esprit sont connectés - Rejoins nos défis sportifs pour booster tes performances business</p>
+        
+        <div class="challenges-grid">
+            <div class="challenge-card animate-on-scroll">
+                <div class="challenge-icon">💪</div>
+                <h3>Challenge 30 jours Fitness</h3>
+                <p>Transforme ton corps et ton mindset en 30 jours avec des workouts quotidiens spécial entrepreneurs</p>
+                <div class="challenge-stats">
+                    <span>🔥 1,247 participants</span>
+                    <span>📅 Démarre le 1er Janvier</span>
+                </div>
+                <button class="btn btn-primary" onclick="joinChallenge('fitness')">Relever le défi</button>
+            </div>
+            
+            <div class="challenge-card animate-on-scroll">
+                <div class="challenge-icon">🏃</div>
+                <h3>Running & Business</h3>
+                <p>Club de running virtuel - Cours et network avec des entrepreneurs ambitieux</p>
+                <div class="challenge-stats">
+                    <span>👟 892 coureurs actifs</span>
+                    <span>🌍 Course mondiale mensuelle</span>
+                </div>
+                <button class="btn btn-primary" onclick="joinChallenge('running')">Rejoindre le club</button>
+            </div>
+            
+            <div class="challenge-card animate-on-scroll">
+                <div class="challenge-icon">🧘</div>
+                <h3>Yoga & Méditation</h3>
+                <p>Sessions quotidiennes pour la flexibilité mentale et physique des grinders</p>
+                <div class="challenge-stats">
+                    <span>🕉️ 567 pratiquants</span>
+                    <span>⏰ 7h - Session matinale</span>
+                </div>
+                <button class="btn btn-primary" onclick="joinChallenge('yoga')">S'initier</button>
+            </div>
+
+            <div class="challenge-card animate-on-scroll">
+                <div class="challenge-icon">🥊</div>
+                <h3>Boxe & Mentalité Warrior</h3>
+                <p>Développe ta combativité et ta résistance mentale through la boxe</p>
+                <div class="challenge-stats">
+                    <span>🥊 324 warriors</span>
+                    <span>💥 Sessions intensives</span>
+                </div>
+                <button class="btn btn-primary" onclick="joinChallenge('boxe')">Devenir Warrior</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Rejoindre -->
+<section class="join-cta">
+    <div class="container animate-on-scroll">
+        <h2>Prêt à rejoindre le mouvement ?</h2>
+        <p>Rejoins notre communauté exclusive de grinders ambitieux</p>
+        <div class="cta-buttons">
+            <button class="btn btn-primary" onclick="showNewsletterModal()">Rejoindre Maintenant</button>
+            <button class="btn btn-secondary" onclick="showDiscordModal()">Discord Community</button>
+            <a href="{{ url_for('main.content_page') }}" class="btn btn-secondary">📱 Voir le Contenu</a>
+        </div>
+    </div>
+</section>
+
+<!-- Modal Newsletter -->
+<div id="newsletterModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('newsletterModal')">&times;</span>
+        <h3>🚀 Rejoins la Révolution LuMaGrind</h3>
+        <form id="newsletterForm" onsubmit="submitNewsletter(event)">
+            <input type="email" placeholder="Ton email..." required>
+            <input type="text" placeholder="Ton pseudo..." required>
+            <button type="submit" class="btn btn-primary">Devenir Grinder</button>
+        </form>
+    </div>
+</div>
+
+<!-- Script JavaScript -->
+<script>
+// Gestionnaire de communauté
+class CommunityManager {
+    constructor() {
+        this.posts = JSON.parse(localStorage.getItem('lumagrind_posts')) || this.getDefaultPosts();
+        this.init();
+    }
+
+    init() {
+        this.renderPosts();
+        this.renderLeaders();
+        this.animateStats();
+        this.setupEventListeners();
+    }
+
+    getDefaultPosts() {
+        return [
+            {
+                id: 1,
+                username: "HustlerPro",
+                avatar: "💪",
+                content: "🚀 Juste clos mon premier mois à 10K€ de revenue ! Merci à la communauté LuMaGrind pour le mindset et les stratégies partagées. Le grind paye !",
+                timestamp: "Il y a 2h",
+                likes: 142,
+                comments: [
+                    { user: "GrindQueen", avatar: "👑", content: "Félicitations ! Inspirant 🔥", time: "Il y a 1h" }
+                ],
+                userLiked: false
+            },
+            {
+                id: 2,
+                username: "SportWarrior",
+                avatar: "🏋️",
+                content: "💪 Défi sportif accompli ! 30 jours de training sans faille. L'énergie et la focus au top pour le business !",
+                timestamp: "Il y a 5h",
+                likes: 89,
+                comments: [
+                    { user: "FitEntrepreneur", avatar: "🚀", content: "Respect ! Le sport change tout 💯", time: "Il y a 3h" }
+                ],
+                userLiked: true
+            }
+        ];
+    }
+
+    setupEventListeners() {
+        // Enter key pour les posts
+        const postInput = document.getElementById('postInput');
+        if (postInput) {
+            postInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    createPost();
+                }
+            });
+        }
+    }
+
+    renderPosts() {
+        const grid = document.getElementById('postsGrid');
+        const template = document.getElementById('postTemplate');
+
+        if (!grid || !template) return;
+
+        grid.innerHTML = '';
+
+        this.posts.forEach(post => {
+            const postElement = template.content.cloneNode(true);
+            
+            // Remplir les données du post
+            postElement.querySelector('.username').textContent = post.username;
+            postElement.querySelector('.user-avatar').textContent = post.avatar;
+            postElement.querySelector('.post-time').textContent = post.timestamp;
+            postElement.querySelector('.post-text').textContent = post.content;
+            postElement.querySelector('.like-count').textContent = post.likes;
+            
+            // Ajouter les commentaires
+            const commentsContainer = postElement.querySelector('.post-comments');
+            post.comments.forEach(comment => {
+                const commentElement = document.createElement('div');
+                commentElement.className = 'comment';
+                commentElement.innerHTML = `
+                    <div class="comment-avatar">${comment.avatar}</div>
+                    <div class="comment-content">
+                        <strong>${comment.user}</strong>
+                        <span>${comment.content}</span>
+                        <small>${comment.time}</small>
+                    </div>
+                `;
+                commentsContainer.appendChild(commentElement);
+            });
+            
+            grid.appendChild(postElement);
+        });
+    }
+
+    renderLeaders() {
+        const leadersGrid = document.getElementById('leadersGrid');
+        if (!leadersGrid) return;
+
+        const leaders = [
+            { name: 'HustlerPro', score: '🔥 2,847', rank: '🥇', avatar: '💪' },
+            { name: 'MindsetMaster', score: '💪 2,451', rank: '🥈', avatar: '🧠' },
+            { name: 'GrindQueen', score: '🚀 2,189', rank: '🥉', avatar: '👑' },
+            { name: 'SportWarrior', score: '🏋️ 1,956', rank: '4', avatar: '🏋️' }
+        ];
+
+        leadersGrid.innerHTML = leaders.map(leader => `
+            <div class="leader-card animate-on-scroll">
+                <div class="leader-rank">${leader.rank}</div>
+                <div class="leader-avatar">${leader.avatar}</div>
+                <h3 class="leader-name">${leader.name}</h3>
+                <div class="leader-score">${leader.score}</div>
+            </div>
+        `).join('');
+    }
+
+    animateStats() {
+        this.animateCounter('membersCount', 12457);
+        this.animateCounter('postsCount', 8923);
+        this.animateCounter('countriesCount', 67);
+    }
+
+    animateCounter(elementId, target) {
+        const element = document.getElementById(elementId);
+        if (!element) return;
+
+        let current = 0;
+        const increment = target / 50;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            element.textContent = Math.floor(current).toLocaleString();
+        }, 40);
+    }
+}
+
+// Fonctions globales
+function createPost() {
+    const input = document.getElementById('postInput');
+    const content = input.value.trim();
+    
+    if (content) {
+        showNotification('Post partagé avec la communauté ! 🔥');
+        input.value = '';
+    }
+}
+
+function likePost(button) {
+    const likeCount = button.querySelector('.like-count');
+    let count = parseInt(likeCount.textContent);
+    likeCount.textContent = count + 1;
+    
+    // Animation
+    button.style.transform = 'scale(1.2)';
+    setTimeout(() => {
+        button.style.transform = 'scale(1)';
+    }, 200);
+}
+
+function showNewsletterModal() {
+    document.getElementById('newsletterModal').style.display = 'block';
+}
+
+function showDiscordModal() {
+    showNotification('Lien Discord à venir ! 🎮 Rejoins-nous bientôt !');
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+}
+
+function submitNewsletter(event) {
+    event.preventDefault();
+    showNotification('Bienvenue dans la famille Grinder ! 🔥');
+    closeModal('newsletterModal');
+}
+
+function joinChallenge(challengeType) {
+    const challenges = {
+        'fitness': '💪 Challenge Fitness 30 jours',
+        'running': '🏃 Club Running & Business', 
+        'yoga': '🧘 Yoga & Méditation',
+        'boxe': '🥊 Boxe Warrior'
+    };
+    showNotification(`Tu as rejoint le ${challenges[challengeType]} ! 🚀`);
+}
+
+function showNotification(message) {
+    // Créer une notification toast
+    const toast = document.createElement('div');
+    toast.textContent = message;
+    toast.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: var(--gradient-fire);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        z-index: 10000;
+        animation: slideInRight 0.3s ease;
+    `;
+    
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
+
+// Initialiser le manager de communauté
+document.addEventListener('DOMContentLoaded', () => {
+    new CommunityManager();
+    
+    // Animation au scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+    });
+});
+</script>
+
+<style>
+/* Styles pour les nouvelles sections */
+.performance-stats {
+    padding: 3rem 0;
+    background: var(--dark-space);
+}
+
+.sport-challenges {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, var(--darker-space) 0%, rgba(255, 107, 53, 0.1) 100%);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-meteor);
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.challenge-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.challenge-card:hover {
+    border-color: var(--primary-glow);
+    transform: translateY(-5px);
+    box-shadow: var(--glow-primary);
+}
+
+.challenge-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.challenge-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--primary-glow);
+}
+
+.challenge-card p {
+    color: var(--text-meteor);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.challenge-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.challenge-stats span {
+    color: var(--text-meteor);
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .challenges-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .challenge-card {
+        padding: 2rem;
+    }
+}
+</style>
+{% endblock %}

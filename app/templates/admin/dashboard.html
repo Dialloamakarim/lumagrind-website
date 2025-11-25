@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - LuMaGrind</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dark-mode">
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="admin-brand">
+                <div class="admin-logo">
+                    <span class="logo-fire">🔥</span>
+                    <span class="logo-text">LuMaGrind Admin</span>
+                </div>
+            </div>
+            
+            <nav class="admin-nav">
+                <div class="nav-section">
+                    <h3>Principal</h3>
+                    <ul class="nav-links">
+                        <li><a href="{{ url_for('admin.dashboard') }}" class="active">
+                            <span class="nav-icon">📊</span>
+                            Dashboard
+                        </a></li>
+                        <li><a href="{{ url_for('admin.analytics') }}">
+                            <span class="nav-icon">📈</span>
+                            Analytics
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Contenu</h3>
+                    <ul class="nav-links">
+                        <li><a href="{{ url_for('admin.posts') }}">
+                            <span class="nav-icon">📝</span>
+                            Articles
+                        </a></li>
+                        <li><a href="{{ url_for('admin.categories') }}">
+                            <span class="nav-icon">📂</span>
+                            Catégories
+                        </a></li>
+                        <li><a href="{{ url_for('admin.media') }}">
+                            <span class="nav-icon">🖼️</span>
+                            Media
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Communauté</h3>
+                    <ul class="nav-links">
+                        <li><a href="{{ url_for('admin.users') }}">
+                            <span class="nav-icon">👥</span>
+                            Utilisateurs
+                            <span class="badge">1.2K</span>
+                        </a></li>
+                        <li><a href="{{ url_for('admin.messages') }}">
+                            <span class="nav-icon">📧</span>
+                            Messages
+                            <span class="badge">24</span>
+                        </a></li>
+                       <li><a href="{{ url_for('admin.admin_testimonials') }}">
+                            <span class="nav-icon">💬</span>
+                            Témoignages
+                            <span class="badge">3</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Paramètres</h3>
+                    <ul class="nav-links">
+                        <li><a href="{{ url_for('admin.settings') }}">
+                            <span class="nav-icon">⚙️</span>
+                            Général
+                        </a></li>
+                        <li><a href="{{ url_for('admin.theme') }}">
+                            <span class="nav-icon">🎨</span>
+                            Apparence
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <ul class="nav-links">
+                        <li><a href="{{ url_for('main.home') }}">
+                            <span class="nav-icon">🌐</span>
+                            Voir le site
+                        </a></li>
+                        <li><a href="{{ url_for('admin.logout') }}">
+                            <span class="nav-icon">🚪</span>
+                            Déconnexion
+                        </a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <h1 class="admin-title">Dashboard</h1>
+                <div class="admin-actions">
+                    <div class="user-menu">
+                        <div class="user-avatar">A</div>
+                        <div class="user-info">
+                            <span class="user-name">Admin LuMaGrind</span>
+                            <span class="user-role">Administrateur</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-trend trend-up">+12%</div>
+                    </div>
+                    <div class="stat-value">1,247</div>
+                    <div class="stat-label">Utilisateurs actifs</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-trend trend-up">+8%</div>
+                    </div>
+                    <div class="stat-value">24.5K</div>
+                    <div class="stat-label">Vues mensuelles</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">💬</div>
+                        <div class="stat-trend trend-up">+15%</div>
+                    </div>
+                    <div class="stat-value">892</div>
+                    <div class="stat-label">Engagements</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">📝</div>
+                        <div class="stat-trend trend-down">-3%</div>
+                    </div>
+                    <div class="stat-value">156</div>
+                    <div class="stat-label">Contenus publiés</div>
+                </div>
+            </div>
+            
+            <!-- Derniers Messages -->
+            <div class="table-container">
+                <div class="table-header">
+                    <h2 class="table-title">Derniers messages de contact</h2>
+                    <div class="table-actions">
+                        <a href="{{ url_for('admin.messages') }}" class="btn btn-primary">Voir tout</a>
+                    </div>
+                </div>
+                
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>Sujet</th>
+                            <th>Date</th>
+                            <th>Statut</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jean Dupont</td>
+                            <td>jean@example.com</td>
+                            <td>Demande de coaching</td>
+                            <td>Il y a 2h</td>
+                            <td><span class="status-badge status-new">Nouveau</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <a href="{{ url_for('admin.view_message', message_id=1) }}" class="btn-sm btn-view">Voir</a>
+                                    <button class="btn-sm btn-edit">Répondre</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Marie Martin</td>
+                            <td>marie@entreprise.com</td>
+                            <td>Partenariat</td>
+                            <td>Il y a 5h</td>
+                            <td><span class="status-badge status-pending">En attente</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <a href="{{ url_for('admin.view_message', message_id=2) }}" class="btn-sm btn-view">Voir</a>
+                                    <button class="btn-sm btn-edit">Répondre</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pierre Lambert</td>
+                            <td>pierre@startup.fr</td>
+                            <td>Conférence</td>
+                            <td>Hier</td>
+                            <td><span class="status-badge status-approved">Traité</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <a href="{{ url_for('admin.view_message', message_id=3) }}" class="btn-sm btn-view">Voir</a>
+                                    <button class="btn-sm btn-edit">Modifier</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="pagination">
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn">Suivant</button>
+                </div>
+            </div>
+            
+            <!-- Activité Récente -->
+            <div class="table-container">
+                <div class="table-header">
+                    <h2 class="table-title">Activité récente</h2>
+                </div>
+                
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Utilisateur</th>
+                            <th>Action</th>
+                            <th>Date</th>
+                            <th>IP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>admin@lumagrind.com</td>
+                            <td>Connexion réussie</td>
+                            <td>Il y a 5min</td>
+                            <td>192.168.1.1</td>
+                        </tr>
+                        <tr>
+                            <td>user123@example.com</td>
+                            <td>Nouvelle inscription</td>
+                            <td>Il y a 15min</td>
+                            <td>85.203.45.12</td>
+                        </tr>
+                        <tr>
+                            <td>marie@entreprise.com</td>
+                            <td>Message de contact</td>
+                            <td>Il y a 2h</td>
+                            <td>77.145.89.33</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+    // Scripts admin de base
+    document.addEventListener('DOMContentLoaded', function() {
+        // Gestion des notifications
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `flash-message flash-${type}`;
+            notification.textContent = message;
+            notification.style.cssText = 'position: fixed; top: 20px; right: 20px; z-index: 10000; padding: 1rem 1.5rem; border-radius: 12px; font-weight: 600; animation: slideInRight 0.3s ease;';
+            
+            if (type === 'success') {
+                notification.style.background = 'var(--gradient-fire)';
+                notification.style.color = 'white';
+            } else {
+                notification.style.background = '#ff6b6b';
+                notification.style.color = 'white';
+            }
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+        }
+
+        // Gestion des boutons d'action
+        document.querySelectorAll('.btn-view').forEach(btn => {
+            btn.addEventListener('click', function() {
+                showNotification('Affichage des détails', 'info');
+            });
+        });
+
+        document.querySelectorAll('.btn-edit').forEach(btn => {
+            btn.addEventListener('click', function() {
+                showNotification('Mode édition active', 'info');
+            });
+        });
+
+        document.querySelectorAll('.btn-delete').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')) {
+                    showNotification('Élément supprimé', 'success');
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>

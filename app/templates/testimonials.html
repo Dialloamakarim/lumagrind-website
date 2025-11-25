@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% block title %}Témoignages - LuMaGrind{% endblock %}
+
+{% block content %}
+<!-- Background Cosmique -->
+<div class="cosmic-background">
+    <div class="stars"></div>
+</div>
+
+<!-- Section Témoignages -->
+<section class="testimonials-section">
+    <div class="testimonials-container">
+        <div class="testimonials-header">
+            <div class="testimonials-badge">
+                <span>🔥 TÉMOIGNAGES</span>
+            </div>
+            <h1 class="testimonials-title">Ils ont transformé leur vie</h1>
+            <p class="testimonials-subtitle">
+                Découvrez les réussites de ceux qui ont adopté le mindset LuMaGrind et ont explosé leurs résultats
+            </p>
+        </div>
+
+        <!-- Grille des Témoignages -->
+        <div class="testimonials-grid">
+            <!-- Témoignage 1 -->
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        "Grâce à LuMaGrind, j'ai multiplié mon chiffre d'affaires par 5 en 6 mois. Le mindset et les stratégies partagées ont complètement transformé ma vision du business."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">KM</div>
+                        <div class="author-info">
+                            <div class="author-name">Kevin Martin</div>
+                            <div class="author-role">Entrepreneur E-commerce</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-stats">
+                        <div class="testimonial-stat">
+                            <span class="stat-value">+425%</span>
+                            <span class="stat-label">CA</span>
+                        </div>
+                        <div class="testimonial-stat">
+                            <span class="stat-value">6 mois</span>
+                            <span class="stat-label">Résultats</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Témoignage 2 -->
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        "La discipline mentale apprise avec LuMaGrind m'a permis de surmonter mes blocages. Aujourd'hui, je gère une équipe de 15 personnes avec un leadership affirmé."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SD</div>
+                        <div class="author-info">
+                            <div class="author-name">Sarah Dubois</div>
+                            <div class="author-role">Manager Tech</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-stats">
+                        <div class="testimonial-stat">
+                            <span class="stat-value">15</span>
+                            <span class="stat-label">Équipe</span>
+                        </div>
+                        <div class="testimonial-stat">
+                            <span class="stat-value">2x</span>
+                            <span class="stat-label">Productivité</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Témoignage 3 -->
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        "Les routines daily grind ont révolutionné mon organisation. Je produis maintenant en 4h ce qui me prenait toute une journée. La clarté mentale est incroyable !"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ML</div>
+                        <div class="author-info">
+                            <div class="author-name">Marc Lambert</div>
+                            <div class="author-role">Freelance Digital</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-stats">
+                        <div class="testimonial-stat">
+                            <span class="stat-value">75%</span>
+                            <span class="stat-label">Temps gagné</span>
+                        </div>
+                        <div class="testimonial-stat">
+                            <span class="stat-value">3x</span>
+                            <span class="stat-label">Clients</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Globales -->
+        <div class="testimonials-stats">
+            <div class="testimonial-stat-card">
+                <div class="stat-card-icon">👥</div>
+                <div class="stat-card-value">1,247</div>
+                <div class="stat-card-label">Grinders Actifs</div>
+            </div>
+            <div class="testimonial-stat-card">
+                <div class="stat-card-icon">⭐</div>
+                <div class="stat-card-value">98%</div>
+                <div class="stat-card-label">Satisfaction</div>
+            </div>
+            <div class="testimonial-stat-card">
+                <div class="stat-card-icon">🚀</div>
+                <div class="stat-card-value">3.2x</div>
+                <div class="stat-card-label">Résultats Moyens</div>
+            </div>
+            <div class="testimonial-stat-card">
+                <div class="stat-card-icon">💫</div>
+                <div class="stat-card-value">4.9/5</div>
+                <div class="stat-card-label">Avis Clients</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="cta-container">
+        <h2>Prêt à transformer votre vie ?</h2>
+        <p>Rejoignez la communauté LuMaGrind et commencez votre révolution personnelle</p>
+        <div class="cta-buttons">
+            <a href="{{ url_for('main.community_page') }}" class="btn btn-primary">Rejoindre la Communauté</a>
+            <a href="{{ url_for('main.contact_page') }}" class="btn btn-secondary">Nous Contacter</a>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Styles spécifiques pour la page témoignages */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.testimonials-section {
+    padding: 6rem 0;
+}
+
+.cta-section {
+    background: var(--gradient-fire);
+    padding: 4rem 0;
+    text-align: center;
+    color: white;
+}
+
+.cta-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>
+{% endblock %}
