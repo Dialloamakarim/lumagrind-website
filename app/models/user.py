@@ -57,10 +57,16 @@ class Comment(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     
     user = db.relationship('User', backref=db.backref('comments', lazy=True))
+# Au lieu de 'data/users.json', utilisez un chemin absolu
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR = os.path.join(BASE_DIR, 'data')
 
 class UserManager:
     def __init__(self):
-        self.users_file = 'data/users.json'
+        self.users_file = os.path.join(DATA_DIR, 'users.json')
+
+        # self.users_file = 'data/users.json'
         self.ensure_data_file()
     
     def ensure_data_file(self):
