@@ -1,0 +1,23 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<div class="admin-header">
+    <h1 class="admin-title">Sauvegarde & Export</h1>
+</div>
+
+<div class="form-card">
+    <h3 style="color: #ff6b35; margin-bottom: 1rem;">Exporter les données</h3>
+    
+    <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+        <a href="{{ url_for('admin.export_csv', type='articles') }}" class="btn">📝 Exporter Articles</a>
+        <a href="{{ url_for('admin.export_csv', type='messages') }}" class="btn">📧 Exporter Messages</a>
+        <a href="{{ url_for('admin.export_csv', type='users') }}" class="btn">👥 Exporter Utilisateurs</a>
+    </div>
+
+    <h3 style="color: #ff6b35; margin-bottom: 1rem;">Sauvegarde manuelle</h3>
+    
+    <div class="form-actions">
+        <button class="btn btn-primary">💾 Créer une sauvegarde</button>
+    </div>
+</div>
+{% endblock %}

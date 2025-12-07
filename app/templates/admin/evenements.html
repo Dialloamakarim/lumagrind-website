@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Événements - Admin LuMaGrind</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dark-mode">
+    <div class="admin-layout">
+        <!-- Sidebar (identique) -->
+        <aside class="admin-sidebar">
+            <!-- Copiez la sidebar de event_edit.html -->
+        </aside>
+        
+        <main class="admin-main">
+            <header class="admin-header">
+                <h1 class="admin-title">Gestion des Événements</h1>
+                <div class="admin-actions">
+                    <a href="{{ url_for('admin.new_event') }}" class="btn btn-primary">+ Nouvel Événement</a>
+                </div>
+            </header>
+
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Titre</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>Statut</th>
+                            <th>Participants</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for event in events %}
+                        <tr>
+                            <td>{{ event.title }}</td>
+                            <td>
+                                <span class="status-badge status-{{ event.type }}">
+                                    {{ event.type }}
+                                </span>
+                            </td>
+                            <td>{{ event.date }} à {{ event.time }}</td>
+                            <td>
+                                <span class="status-badge status-{{ event.status }}">
+                                    {{ event.status }}
+                                </span>
+                            </td>
+                            <td>{{ event.participants if event.participants else 0 }}/{{ event.max_participants if event.max_participants else '∞' }}</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <a href="{{ url_for('admin.edit_event', event_id=event.id) }}" class="btn-sm btn-edit">Modifier</a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding: 2rem;">
+                                <p>Aucun événement trouvé. <a href="{{ url_for('admin.new_event') }}">Créez votre premier événement !</a></p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

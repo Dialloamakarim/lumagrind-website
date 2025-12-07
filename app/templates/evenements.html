@@ -1,0 +1,503 @@
+{% extends "base.html" %}
+
+{% block title %}Événements - LuMaGrind{% endblock %}
+
+{% block content %}
+<!-- Background Cosmique -->
+<div class="cosmic-background">
+    <div class="stars"></div>
+</div>
+
+<!-- Section Événements -->
+<section class="events-section">
+    <div class="events-container">
+        <div class="events-header">
+            <div class="events-badge">
+                <span>🎯 ÉVÉNEMENTS</span>
+            </div>
+            <h1 class="events-title">Nos Événements Exclusifs</h1>
+            <p class="events-subtitle">
+                Rejoignez nos événements live et transformez votre mindset avec la communauté LuMaGrind
+            </p>
+        </div>
+
+        <!-- Filtres Événements -->
+        <div class="events-filters">
+            <button class="filter-btn active" data-filter="all">Tous</button>
+            <button class="filter-btn" data-filter="webinar">Webinaires</button>
+            <button class="filter-btn" data-filter="workshop">Ateliers</button>
+            <button class="filter-btn" data-filter="challenge">Challenges</button>
+        </div>
+
+        <!-- Grille des Événements -->
+        <div class="events-grid">
+            <!-- Événement 1 -->
+            <div class="event-card" data-category="webinar">
+                <div class="event-badge webinar">WEBINAIRE</div>
+                <div class="event-image">
+                    <div class="event-date">
+                        <span class="date-day">15</span>
+                        <span class="date-month">DÉC</span>
+                    </div>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">Masterclass Mindset Gagnant</h3>
+                    <p class="event-description">
+                        Découvrez les 5 piliers pour développer un mindset de champion et atteindre vos objectifs.
+                    </p>
+                    <div class="event-info">
+                        <div class="event-meta">
+                            <span class="event-time">🕐 20:00 - 21:30</span>
+                            <span class="event-type">🌐 En ligne</span>
+                        </div>
+                        <div class="event-stats">
+                            <span class="event-participants">👥 247 inscrits</span>
+                        </div>
+                    </div>
+                    <div class="event-actions">
+                        <button class="btn btn-primary">S'inscrire</button>
+                        <button class="btn btn-secondary">+ Calendrier</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Événement 2 -->
+            <div class="event-card" data-category="workshop">
+                <div class="event-badge workshop">ATELIER</div>
+                <div class="event-image">
+                    <div class="event-date">
+                        <span class="date-day">22</span>
+                        <span class="date-month">DÉC</span>
+                    </div>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">Workshop Productivité Extreme</h3>
+                    <p class="event-description">
+                        Techniques avancées pour multiplier votre productivité et accomplir 2x plus en 2x moins de temps.
+                    </p>
+                    <div class="event-info">
+                        <div class="event-meta">
+                            <span class="event-time">🕐 14:00 - 17:00</span>
+                            <span class="event-type">🌐 En ligne</span>
+                        </div>
+                        <div class="event-stats">
+                            <span class="event-participants">👥 189 inscrits</span>
+                        </div>
+                    </div>
+                    <div class="event-actions">
+                        <button class="btn btn-primary">S'inscrire</button>
+                        <button class="btn btn-secondary">+ Calendrier</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Événement 3 -->
+            <div class="event-card" data-category="challenge">
+                <div class="event-badge challenge">CHALLENGE</div>
+                <div class="event-image">
+                    <div class="event-date">
+                        <span class="date-day">01</span>
+                        <span class="date-month">JAN</span>
+                    </div>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">Challenge 30 Jours de Grind</h3>
+                    <p class="event-description">
+                        Relevez le défi et transformez vos habitudes en 30 jours avec notre communauté de grinders.
+                    </p>
+                    <div class="event-info">
+                        <div class="event-meta">
+                            <span class="event-time">🕐 Démarre le 01/01</span>
+                            <span class="event-type">🌐 Communauté</span>
+                        </div>
+                        <div class="event-stats">
+                            <span class="event-participants">👥 512 participants</span>
+                        </div>
+                    </div>
+                    <div class="event-actions">
+                        <button class="btn btn-primary">Rejoindre</button>
+                        <button class="btn btn-secondary">Détails</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Événements -->
+        <div class="events-cta">
+            <h2>Ne manquez aucun événement</h2>
+            <p>Inscrivez-vous pour recevoir les invitations et rappels</p>
+            <form class="newsletter-form">
+                <div class="input-group">
+                    <input type="email" placeholder="Votre email" required>
+                    <button type="submit" class="btn btn-primary">S'inscrire</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<style>
+/* === SECTION ÉVÉNEMENTS === */
+.events-section {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, var(--dark-space) 0%, rgba(0, 242, 254, 0.05) 100%);
+}
+
+.events-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.events-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.events-badge {
+    display: inline-block;
+    background: rgba(255, 107, 53, 0.15);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    border: 2px solid var(--primary-glow);
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.events-badge span {
+    background: var(--gradient-fire);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.events-title {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    background: var(--gradient-fire);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.events-subtitle {
+    font-size: 1.3rem;
+    color: var(--text-meteor);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Filtres */
+.events-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.8rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    color: var(--text-stellar);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--gradient-fire);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Grille Événements */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.event-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.event-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-glow);
+    box-shadow: var(--glow-primary);
+}
+
+.event-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    z-index: 2;
+}
+
+.event-badge.webinar {
+    background: rgba(0, 242, 254, 0.2);
+    color: var(--accent-neon);
+    border: 1px solid var(--accent-neon);
+}
+
+.event-badge.workshop {
+    background: rgba(255, 107, 53, 0.2);
+    color: var(--primary-glow);
+    border: 1px solid var(--primary-glow);
+}
+
+.event-badge.challenge {
+    background: rgba(123, 220, 181, 0.2);
+    color: #7bd4b5;
+    border: 1px solid #7bd4b5;
+}
+
+.event-image {
+    height: 200px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.event-date {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1rem;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    backdrop-filter: blur(10px);
+}
+
+.date-day {
+    display: block;
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.date-month {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.event-content {
+    padding: 2rem;
+}
+
+.event-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-stellar);
+}
+
+.event-description {
+    color: var(--text-meteor);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.event-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.event-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.event-time,
+.event-type {
+    font-size: 0.9rem;
+    color: var(--text-meteor);
+}
+
+.event-stats {
+    font-size: 0.9rem;
+    color: var(--text-meteor);
+}
+
+.event-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.event-actions .btn {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* CTA Événements */
+.events-cta {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 3rem;
+    backdrop-filter: blur(10px);
+}
+
+.events-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-stellar);
+}
+
+.events-cta p {
+    color: var(--text-meteor);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.newsletter-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.input-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+}
+
+.input-group input::placeholder {
+    color: var(--text-meteor);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .events-title {
+        font-size: 2.5rem;
+    }
+    
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .event-actions {
+        flex-direction: column;
+    }
+    
+    .event-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .events-cta {
+        padding: 2rem;
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .events-container {
+        padding: 0 1rem;
+    }
+    
+    .events-title {
+        font-size: 2rem;
+    }
+    
+    .event-content {
+        padding: 1.5rem;
+    }
+    
+    .events-filters {
+        gap: 0.5rem;
+    }
+    
+    .filter-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+</style>
+
+<script>
+// Filtrage des événements
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const eventCards = document.querySelectorAll('.event-card');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Retirer active de tous les boutons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Ajouter active au bouton cliqué
+            this.classList.add('active');
+            
+            const filter = this.getAttribute('data-filter');
+            
+            // Filtrer les événements
+            eventCards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+    
+    // Animation d'apparition des cartes
+    eventCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'all 0.5s ease';
+        
+        setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 200);
+    });
+});
+</script>
+{% endblock %}

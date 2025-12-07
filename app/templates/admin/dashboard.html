@@ -25,7 +25,7 @@
                             <span class="nav-icon">📊</span>
                             Dashboard
                         </a></li>
-                        <li><a href="{{ url_for('admin.analytics') }}">
+                        <li><a href="{{ url_for('admin.parametres') }}">
                             <span class="nav-icon">📈</span>
                             Analytics
                         </a></li>
@@ -35,17 +35,17 @@
                 <div class="nav-section">
                     <h3>Contenu</h3>
                     <ul class="nav-links">
-                        <li><a href="{{ url_for('admin.posts') }}">
+                        <li><a href="{{ url_for('admin.articles') }}">
                             <span class="nav-icon">📝</span>
                             Articles
                         </a></li>
-                        <li><a href="{{ url_for('admin.categories') }}">
-                            <span class="nav-icon">📂</span>
-                            Catégories
+                        <li><a href="{{ url_for('admin.evenements') }}">
+                            <span class="nav-icon">🎯</span>
+                            Événements
                         </a></li>
-                        <li><a href="{{ url_for('admin.media') }}">
-                            <span class="nav-icon">🖼️</span>
-                            Media
+                        <li><a href="{{ url_for('admin.temoignages') }}">
+                            <span class="nav-icon">💬</span>
+                            Témoignages
                         </a></li>
                     </ul>
                 </div>
@@ -53,20 +53,13 @@
                 <div class="nav-section">
                     <h3>Communauté</h3>
                     <ul class="nav-links">
-                        <li><a href="{{ url_for('admin.users') }}">
+                        <li><a href="{{ url_for('admin.utilisateurs') }}">
                             <span class="nav-icon">👥</span>
                             Utilisateurs
-                            <span class="badge">1.2K</span>
                         </a></li>
                         <li><a href="{{ url_for('admin.messages') }}">
                             <span class="nav-icon">📧</span>
                             Messages
-                            <span class="badge">24</span>
-                        </a></li>
-                       <li><a href="{{ url_for('admin.admin_testimonials') }}">
-                            <span class="nav-icon">💬</span>
-                            Témoignages
-                            <span class="badge">3</span>
                         </a></li>
                     </ul>
                 </div>
@@ -74,13 +67,9 @@
                 <div class="nav-section">
                     <h3>Paramètres</h3>
                     <ul class="nav-links">
-                        <li><a href="{{ url_for('admin.settings') }}">
+                        <li><a href="{{ url_for('admin.parametres') }}">
                             <span class="nav-icon">⚙️</span>
                             Général
-                        </a></li>
-                        <li><a href="{{ url_for('admin.theme') }}">
-                            <span class="nav-icon">🎨</span>
-                            Apparence
                         </a></li>
                     </ul>
                 </div>
@@ -119,20 +108,20 @@
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-header">
-                        <div class="stat-icon">👥</div>
+                        <div class="stat-icon">📝</div>
                         <div class="stat-trend trend-up">+12%</div>
                     </div>
-                    <div class="stat-value">1,247</div>
-                    <div class="stat-label">Utilisateurs actifs</div>
+                    <div class="stat-value">{{ stats.total_articles if stats else 0 }}</div>
+                    <div class="stat-label">Articles</div>
                 </div>
                 
                 <div class="stat-card">
                     <div class="stat-header">
-                        <div class="stat-icon">📈</div>
+                        <div class="stat-icon">🎯</div>
                         <div class="stat-trend trend-up">+8%</div>
                     </div>
-                    <div class="stat-value">24.5K</div>
-                    <div class="stat-label">Vues mensuelles</div>
+                    <div class="stat-value">{{ stats.total_events if stats else 0 }}</div>
+                    <div class="stat-label">Événements</div>
                 </div>
                 
                 <div class="stat-card">
@@ -140,175 +129,435 @@
                         <div class="stat-icon">💬</div>
                         <div class="stat-trend trend-up">+15%</div>
                     </div>
-                    <div class="stat-value">892</div>
-                    <div class="stat-label">Engagements</div>
+                    <div class="stat-value">{{ stats.total_testimonials if stats else 0 }}</div>
+                    <div class="stat-label">Témoignages</div>
                 </div>
                 
                 <div class="stat-card">
                     <div class="stat-header">
-                        <div class="stat-icon">📝</div>
+                        <div class="stat-icon">📧</div>
                         <div class="stat-trend trend-down">-3%</div>
                     </div>
-                    <div class="stat-value">156</div>
-                    <div class="stat-label">Contenus publiés</div>
+                    <div class="stat-value">{{ stats.unread_messages if stats else 0 }}</div>
+                    <div class="stat-label">Messages non lus</div>
                 </div>
             </div>
-            
-            <!-- Derniers Messages -->
-            <div class="table-container">
-                <div class="table-header">
-                    <h2 class="table-title">Derniers messages de contact</h2>
-                    <div class="table-actions">
-                        <a href="{{ url_for('admin.messages') }}" class="btn btn-primary">Voir tout</a>
-                    </div>
-                </div>
+
+            <!-- Actions Rapides -->
+            <div class="quick-actions-grid">
+                <a href="{{ url_for('admin.new_article') }}" class="quick-action-card">
+                    <div class="action-icon">✏️</div>
+                    <div class="action-title">Nouvel Article</div>
+                    <div class="action-desc">Créer un nouvel article de blog</div>
+                </a>
                 
-                <table class="admin-table">
-                    <thead>
-                        <tr>
-                            <th>Nom</th>
-                            <th>Email</th>
-                            <th>Sujet</th>
-                            <th>Date</th>
-                            <th>Statut</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Jean Dupont</td>
-                            <td>jean@example.com</td>
-                            <td>Demande de coaching</td>
-                            <td>Il y a 2h</td>
-                            <td><span class="status-badge status-new">Nouveau</span></td>
-                            <td>
-                                <div class="action-buttons">
-                                    <a href="{{ url_for('admin.view_message', message_id=1) }}" class="btn-sm btn-view">Voir</a>
-                                    <button class="btn-sm btn-edit">Répondre</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Marie Martin</td>
-                            <td>marie@entreprise.com</td>
-                            <td>Partenariat</td>
-                            <td>Il y a 5h</td>
-                            <td><span class="status-badge status-pending">En attente</span></td>
-                            <td>
-                                <div class="action-buttons">
-                                    <a href="{{ url_for('admin.view_message', message_id=2) }}" class="btn-sm btn-view">Voir</a>
-                                    <button class="btn-sm btn-edit">Répondre</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Pierre Lambert</td>
-                            <td>pierre@startup.fr</td>
-                            <td>Conférence</td>
-                            <td>Hier</td>
-                            <td><span class="status-badge status-approved">Traité</span></td>
-                            <td>
-                                <div class="action-buttons">
-                                    <a href="{{ url_for('admin.view_message', message_id=3) }}" class="btn-sm btn-view">Voir</a>
-                                    <button class="btn-sm btn-edit">Modifier</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <a href="{{ url_for('admin.new_event') }}" class="quick-action-card">
+                    <div class="action-icon">🎯</div>
+                    <div class="action-title">Nouvel Événement</div>
+                    <div class="action-desc">Planifier un événement</div>
+                </a>
                 
-                <div class="pagination">
-                    <button class="pagination-btn active">1</button>
-                    <button class="pagination-btn">2</button>
-                    <button class="pagination-btn">3</button>
-                    <button class="pagination-btn">Suivant</button>
-                </div>
+                <a href="{{ url_for('admin.new_testimonial') }}" class="quick-action-card">
+                    <div class="action-icon">💬</div>
+                    <div class="action-title">Nouveau Témoignage</div>
+                    <div class="action-desc">Ajouter un témoignage</div>
+                </a>
+                
+                <a href="{{ url_for('admin.parametres') }}" class="quick-action-card">
+                    <div class="action-icon">⚙️</div>
+                    <div class="action-title">Paramètres</div>
+                    <div class="action-desc">Configurer le site</div>
+                </a>
             </div>
             
             <!-- Activité Récente -->
             <div class="table-container">
                 <div class="table-header">
-                    <h2 class="table-title">Activité récente</h2>
+                    <h2 class="table-title">Activité Récente</h2>
                 </div>
                 
-                <table class="admin-table">
-                    <thead>
-                        <tr>
-                            <th>Utilisateur</th>
-                            <th>Action</th>
-                            <th>Date</th>
-                            <th>IP</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>admin@lumagrind.com</td>
-                            <td>Connexion réussie</td>
-                            <td>Il y a 5min</td>
-                            <td>192.168.1.1</td>
-                        </tr>
-                        <tr>
-                            <td>user123@example.com</td>
-                            <td>Nouvelle inscription</td>
-                            <td>Il y a 15min</td>
-                            <td>85.203.45.12</td>
-                        </tr>
-                        <tr>
-                            <td>marie@entreprise.com</td>
-                            <td>Message de contact</td>
-                            <td>Il y a 2h</td>
-                            <td>77.145.89.33</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="activity-list">
+                    {% if activity %}
+                        {% for item in activity %}
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                {% if item.type == 'article' %}📝{% endif %}
+                                {% if item.type == 'message' %}📧{% endif %}
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">{{ item.action }}: {{ item.title }}</div>
+                                <div class="activity-meta">Par {{ item.author }} • {{ item.time }}</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="activity-item">
+                            <div class="activity-content">
+                                <div class="activity-title">Aucune activité récente</div>
+                                <div class="activity-meta">Commencez à créer du contenu !</div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
         </main>
     </div>
     
+    <style>
+    /* Styles spécifiques pour le dashboard admin */
+    .admin-layout {
+        display: flex;
+        min-height: 100vh;
+    }
+
+    .admin-sidebar {
+        width: 280px;
+        background: rgba(10, 10, 10, 0.95);
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 2rem 0;
+    }
+
+    .admin-main {
+        flex: 1;
+        padding: 2rem;
+        overflow-y: auto;
+    }
+
+    .admin-brand {
+        padding: 0 2rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    .admin-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+
+    .nav-section {
+        margin-bottom: 2rem;
+    }
+
+    .nav-section h3 {
+        color: var(--text-meteor);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+        padding: 0 2rem;
+    }
+
+    .nav-links {
+        list-style: none;
+    }
+
+    .nav-links li a {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 2rem;
+        color: var(--text-stellar);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+        background: rgba(255, 107, 53, 0.1);
+        border-left-color: var(--primary-glow);
+        color: var(--primary-glow);
+    }
+
+    .admin-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .admin-title {
+        font-size: 2.5rem;
+        font-weight: 900;
+        background: var(--gradient-fire);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .user-menu {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        padding: 0.75rem 1.5rem;
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+        background: var(--gradient-fire);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: white;
+    }
+
+    .user-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .user-name {
+        font-weight: 600;
+        color: var(--text-stellar);
+    }
+
+    .user-role {
+        font-size: 0.8rem;
+        color: var(--text-meteor);
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .stat-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 1.5rem;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+        border-color: var(--primary-glow);
+        transform: translateY(-5px);
+    }
+
+    .stat-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .stat-icon {
+        font-size: 1.5rem;
+    }
+
+    .stat-trend {
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: 0.25rem 0.5rem;
+        border-radius: 20px;
+    }
+
+    .trend-up {
+        background: rgba(40, 167, 69, 0.2);
+        color: #28a745;
+    }
+
+    .trend-down {
+        background: rgba(220, 53, 69, 0.2);
+        color: #dc3545;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+        font-weight: 900;
+        background: var(--gradient-fire);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+        color: var(--text-meteor);
+        font-size: 0.9rem;
+    }
+
+    /* Quick Actions */
+    .quick-actions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .quick-action-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 1.5rem;
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    .quick-action-card:hover {
+        border-color: var(--primary-glow);
+        transform: translateY(-5px);
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .action-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .action-title {
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: var(--text-stellar);
+    }
+
+    .action-desc {
+        color: var(--text-meteor);
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    /* Table Container */
+    .table-container {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 1.5rem;
+        backdrop-filter: blur(10px);
+    }
+
+    .table-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .table-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-stellar);
+    }
+
+    /* Activity List */
+    .activity-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .activity-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .activity-item:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .activity-icon {
+        font-size: 1.2rem;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 107, 53, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .activity-content {
+        flex: 1;
+    }
+
+    .activity-title {
+        font-weight: 600;
+        color: var(--text-stellar);
+        margin-bottom: 0.25rem;
+    }
+
+    .activity-meta {
+        font-size: 0.8rem;
+        color: var(--text-meteor);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .admin-layout {
+            flex-direction: column;
+        }
+        
+        .admin-sidebar {
+            width: 100%;
+            padding: 1rem 0;
+        }
+        
+        .admin-main {
+            padding: 1rem;
+        }
+        
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .quick-actions-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .admin-header {
+            flex-direction: column;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+    }
+    </style>
+    
     <script>
-    // Scripts admin de base
     document.addEventListener('DOMContentLoaded', function() {
-        // Gestion des notifications
-        function showNotification(message, type = 'success') {
-            const notification = document.createElement('div');
-            notification.className = `flash-message flash-${type}`;
-            notification.textContent = message;
-            notification.style.cssText = 'position: fixed; top: 20px; right: 20px; z-index: 10000; padding: 1rem 1.5rem; border-radius: 12px; font-weight: 600; animation: slideInRight 0.3s ease;';
-            
-            if (type === 'success') {
-                notification.style.background = 'var(--gradient-fire)';
-                notification.style.color = 'white';
-            } else {
-                notification.style.background = '#ff6b6b';
-                notification.style.color = 'white';
-            }
-            
-            document.body.appendChild(notification);
+        // Animation des cartes de stats
+        const statCards = document.querySelectorAll('.stat-card');
+        statCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
             
             setTimeout(() => {
-                notification.remove();
-            }, 5000);
-        }
-
-        // Gestion des boutons d'action
-        document.querySelectorAll('.btn-view').forEach(btn => {
-            btn.addEventListener('click', function() {
-                showNotification('Affichage des détails', 'info');
-            });
+                card.style.transition = 'all 0.5s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, index * 100);
         });
 
-        document.querySelectorAll('.btn-edit').forEach(btn => {
-            btn.addEventListener('click', function() {
-                showNotification('Mode édition active', 'info');
-            });
-        });
-
-        document.querySelectorAll('.btn-delete').forEach(btn => {
-            btn.addEventListener('click', function() {
-                if (confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')) {
-                    showNotification('Élément supprimé', 'success');
-                }
-            });
+        // Animation des actions rapides
+        const quickActions = document.querySelectorAll('.quick-action-card');
+        quickActions.forEach((action, index) => {
+            action.style.opacity = '0';
+            action.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                action.style.transition = 'all 0.5s ease';
+                action.style.opacity = '1';
+                action.style.transform = 'translateY(0)';
+            }, (index + statCards.length) * 100);
         });
     });
     </script>

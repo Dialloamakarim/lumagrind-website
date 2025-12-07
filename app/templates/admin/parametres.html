@@ -1,0 +1,100 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Paramètres - Admin LuMaGrind{% endblock %}
+
+{% block content %}
+<div class="admin-header">
+    <h1 class="admin-title">Paramètres du Site</h1>
+</div>
+
+<div class="form-card">
+    <form method="POST">
+        <div class="form-group">
+            <label for="site_title">Titre du site</label>
+            <input type="text" id="site_title" name="site_title" value="{{ settings.site_title }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="site_description">Description du site</label>
+            <textarea id="site_description" name="site_description" required>{{ settings.site_description }}</textarea>
+        </div>
+
+        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+                <label for="admin_email">Email administrateur</label>
+                <input type="email" id="admin_email" name="admin_email" value="{{ settings.admin_email }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contact_email">Email de contact</label>
+                <input type="email" id="contact_email" name="contact_email" value="{{ settings.contact_email }}" required>
+            </div>
+        </div>
+
+        <h3 style="color: #ff6b35; margin: 2rem 0 1rem 0;">Réseaux sociaux</h3>
+
+        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+                <label for="social_facebook">Facebook</label>
+                <input type="url" id="social_facebook" name="social_facebook" value="{{ settings.social_facebook or '' }}">
+            </div>
+
+            <div class="form-group">
+                <label for="social_instagram">Instagram</label>
+                <input type="url" id="social_instagram" name="social_instagram" value="{{ settings.social_instagram or '' }}">
+            </div>
+        </div>
+
+        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+                <label for="social_twitter">Twitter</label>
+                <input type="url" id="social_twitter" name="social_twitter" value="{{ settings.social_twitter or '' }}">
+            </div>
+
+            <div class="form-group">
+                <label for="social_linkedin">LinkedIn</label>
+                <input type="url" id="social_linkedin" name="social_linkedin" value="{{ settings.social_linkedin or '' }}">
+            </div>
+        </div>
+        <div>
+             <div class="form-group">
+        <label for="social_youtube">YouTube</label>
+        <input type="url" id="social_youtube" name="social_youtube" 
+               value="{{ settings.social_youtube or 'https://youtube.com/@LuMaGrind' }}">
+    </div>
+    <div><div class="form-group">
+        <label for="social_tiktok">TikTok</label>
+        <input type="url" id="social_tiktok" name="social_tiktok" 
+               value="{{ settings.social_tiktok or 'https://tiktok.com/@LuMaGrind' }}">
+    </div></div>
+        </div>
+
+        <h3 style="color: #ff6b35; margin: 2rem 0 1rem 0;">Fonctionnalités</h3>
+
+        <div class="form-group">
+            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" name="newsletter_active" {% if settings.newsletter_active %}checked{% endif %}>
+                Activer la newsletter
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" name="comments_active" {% if settings.comments_active %}checked{% endif %}>
+                Activer les commentaires
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" name="maintenance_mode" {% if settings.maintenance_mode %}checked{% endif %}>
+                Mode maintenance
+            </label>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Sauvegarder les paramètres</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

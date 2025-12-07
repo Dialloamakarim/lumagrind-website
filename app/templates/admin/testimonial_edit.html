@@ -1,32 +1,46 @@
 {% extends "admin/base.html" %}
 
+{% block title %}{% if testimonial %}Modifier{% else %}Nouveau{% endif %} Témoignage - Admin LuMaGrind{% endblock %}
+
 {% block content %}
 <div class="admin-header">
-    <h1 class="admin-title">Nouveau Témoignage</h1>
+    <h1 class="admin-title">{% if testimonial %}Modifier le témoignage{% else %}Nouveau Témoignage{% endif %}</h1>
+    <a href="{{ url_for('admin.temoignages') }}" class="btn btn-secondary">← Retour</a>
 </div>
 
 <div class="form-card">
     <form method="POST">
-        <div class="form-grid">
-            <div class="form-group">
-                <label for="name">Nom</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="role">Rôle</label>
-                <input type="text" id="role" name="role" required>
-            </div>
-            
-            <div class="form-group full-width">
-                <label for="content">Témoignage</label>
-                <textarea id="content" name="content" rows="6" required></textarea>
-            </div>
+        <div class="form-group">
+            <label for="name">Nom</label>
+            <input type="text" id="name" name="name" value="{{ testimonial.name if testimonial }}" required>
         </div>
-        
+
+        <div class="form-group">
+            <label for="role">Rôle/Entreprise</label>
+            <input type="text" id="role" name="role" value="{{ testimonial.role if testimonial }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="content">Témoignage</label>
+            <textarea id="content" name="content" required>{{ testimonial.content if testimonial }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="rating">Note (1-5)</label>
+            <select id="rating" name="rating">
+                <option value="5" {% if testimonial and testimonial.rating == 5 %}selected{% endif %}>⭐️⭐️⭐️⭐️⭐️ (5)</option>
+                <option value="4" {% if testimonial and testimonial.rating == 4 %}selected{% endif %}>⭐️⭐️⭐️⭐️ (4)</option>
+                <option value="3" {% if testimonial and testimonial.rating == 3 %}selected{% endif %}>⭐️⭐️⭐️ (3)</option>
+                <option value="2" {% if testimonial and testimonial.rating == 2 %}selected{% endif %}>⭐️⭐️ (2)</option>
+                <option value="1" {% if testimonial and testimonial.rating == 1 %}selected{% endif %}>⭐️ (1)</option>
+            </select>
+        </div>
+
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Créer</button>
-            <a href="{{ url_for('admin.admin_testimonials') }}" class="btn btn-secondary">Annuler</a>
+            <button type="submit" class="btn btn-primary">
+                {% if testimonial %}Modifier{% else %}Créer{% endif %} le témoignage
+            </button>
+            <a href="{{ url_for('admin.temoignages') }}" class="btn btn-secondary">Annuler</a>
         </div>
     </form>
 </div>

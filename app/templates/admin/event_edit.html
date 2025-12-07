@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if event %}Modifier{% else %}Nouvel{% endif %} Événement - Admin LuMaGrind</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dark-mode">
+    <div class="admin-layout">
+        <!-- Sidebar (identique aux autres templates) -->
+        <aside class="admin-sidebar">
+            <div class="admin-brand">
+                <div class="admin-logo">
+                    <span class="logo-fire">🔥</span>
+                    <span class="logo-text">LuMaGrind Admin</span>
+                </div>
+            </div>
+            
+            <nav class="admin-nav">
+                <div class="nav-section">
+                    <h3>Principal</h3>
+                    <ul class="nav-links">
+                        <li><a href="{{ url_for('admin.dashboard') }}">📊 Dashboard</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Contenu</h3>
+                    <ul class="nav-links">
+                        <li><a href="{{ url_for('admin.articles') }}">📝 Articles</a></li>
+                        <li><a href="{{ url_for('admin.evenements') }}">🎯 Événements</a></li>
+                        <li><a href="{{ url_for('admin.temoignages') }}">💬 Témoignages</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <ul class="nav-links">
+                        <li><a href="{{ url_for('main.home') }}">🌐 Voir le site</a></li>
+                        <li><a href="{{ url_for('admin.logout') }}">🚪 Déconnexion</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <h1 class="admin-title">{% if event %}Modifier{% else %}Nouvel{% endif %} Événement</h1>
+                <div class="admin-actions">
+                    <a href="{{ url_for('admin.evenements') }}" class="btn btn-secondary">← Retour</a>
+                </div>
+            </header>
+
+            <!-- Formulaire Événement -->
+            <div class="form-card">
+                <form method="POST">
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="title">Titre de l'événement *</label>
+                            <input type="text" id="title" name="title" 
+                                   value="{{ event.title if event }}" 
+                                   placeholder="Masterclass Mindset Gagnant..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="type">Type d'événement *</label>
+                            <select id="type" name="type" required>
+                                <option value="">Choisir un type</option>
+                                <option value="webinar" {% if event and event.type == 'webinar' %}selected{% endif %}>Webinaire</option>
+                                <option value="workshop" {% if event and event.type == 'workshop' %}selected{% endif %}>Atelier</option>
+                                <option value="challenge" {% if event and event.type == 'challenge' %}selected{% endif %}>Challenge</option>
+                                <option value="conference" {% if event and event.type == 'conference' %}selected{% endif %}>Conférence</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Date *</label>
+                            <input type="date" id="date" name="date" 
+                                   value="{{ event.date if event }}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time">Heure *</label>
+                            <input type="time" id="time" name="time" 
+                                   value="{{ event.time if event }}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="duration">Durée</label>
+                            <input type="text" id="duration" name="duration" 
+                                   value="{{ event.duration if event }}" 
+                                   placeholder="2 heures">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">Lieu</label>
+                            <input type="text" id="location" name="location" 
+                                   value="{{ event.location if event }}" 
+                                   placeholder="En ligne ou adresse physique">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="max_participants">Participants max</label>
+                            <input type="number" id="max_participants" name="max_participants" 
+                                   value="{{ event.max_participants if event }}" 
+                                   placeholder="100">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="price">Prix (€)</label>
+                            <input type="number" id="price" name="price" 
+                                   value="{{ event.price if event }}" 
+                                   placeholder="0 pour gratuit" step="0.01">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status">Statut</label>
+                            <select id="status" name="status">
+                                <option value="planned" {% if not event or event.status == 'planned' %}selected{% endif %}>Planifié</option>
+                                <option value="active" {% if event and event.status == 'active' %}selected{% endif %}>Actif</option>
+                                <option value="completed" {% if event and event.status == 'completed' %}selected{% endif %}>Terminé</option>
+                                <option value="cancelled" {% if event and event.status == 'cancelled' %}selected{% endif %}>Annulé</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="description">Description *</label>
+                            <textarea id="description" name="description" rows="8" 
+                                      placeholder="Description détaillée de l'événement..." required>{{ event.description if event }}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            {% if event %}Mettre à jour{% else %}Créer l'événement{% endif %}
+                        </button>
+                        <a href="{{ url_for('admin.evenements') }}" class="btn btn-secondary">Annuler</a>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <style>
+    /* Utilisez les mêmes styles que article_edit.html */
+    .form-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+    .form-group.full-width { grid-column: 1 / -1; }
+    .form-group label { display: block; margin-bottom: 0.5rem; color: var(--text-stellar); font-weight: 600; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; color: white; font-size: 1rem; }
+    .form-actions { display: flex; gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .btn { padding: 0.8rem 1.5rem; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.3s ease; }
+    .btn-primary { background: var(--gradient-fire); color: white; }
+    .btn-secondary { background: rgba(255,255,255,0.1); color: var(--text-stellar); border: 1px solid rgba(255,255,255,0.2); }
+    </style>
+</body>
+</html>
